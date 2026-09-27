@@ -148,8 +148,9 @@ export const CORE_SPECIALTIES: Specialty[] = [
       "Cabinet interiors, drawers, and trim detailing",
       "Ready for homeowner walk-throughs and immediate move-in",
     ],
-    image: "/images/services/post-construction-cleaning-mesquite-nv.jpg",
-    imageAlt: "Post-construction cleaning of a new build in Mesquite NV",
+    image: "/images/services/post-construction-cleaning-before-after-mesquite-nv.jpg",
+    imageAlt:
+      "Master bathroom before and after post-construction cleaning in Mesquite NV: debris and drywall dust removed",
   },
 ];
 

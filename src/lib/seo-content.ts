@@ -586,8 +586,9 @@ export const SERVICE_PAGES: ServicePage[] = [
           "Yes. We clean new builds and remodels for contractors and homeowners and can schedule around your handover dates.",
       },
     ],
-    image: "/gallery/mesquite-walk-in-tile-shower-deep-clean.jpg",
-    imageAlt: "Clean white tile walk-in shower after a renovation clean in Mesquite NV",
+    image: "/images/services/post-construction-cleaning-before-after-mesquite-nv.jpg",
+    imageAlt:
+      "Master bathroom before and after post-construction cleaning in Mesquite NV: debris and drywall dust removed",
   },
 ];
 
