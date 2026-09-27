@@ -152,6 +152,9 @@ export const CORE_SPECIALTIES: Specialty[] = [
       "Outdoor surfaces like patios, walkways and entryways",
       "Great for homes and vacation rentals",
     ],
+    image: "/images/services/pressure-washing-mesquite-nv.jpg",
+    imageAlt:
+      "Pressure washing a paved walkway to remove dirt and grime, exterior maintenance in Mesquite NV",
   },
   {
     id: "post-construction",

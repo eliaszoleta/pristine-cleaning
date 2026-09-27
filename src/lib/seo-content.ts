@@ -594,6 +594,9 @@ export const SERVICE_PAGES: ServicePage[] = [
           "Yes. We serve Mesquite and Bunkerville NV, St. George UT, Littlefield and Scenic AZ, and nearby communities.",
       },
     ],
+    image: "/images/services/pressure-washing-mesquite-nv.jpg",
+    imageAlt:
+      "Pressure washing a paved walkway to remove dirt and grime, exterior maintenance in Mesquite NV",
   },
   {
     slug: "post-construction-cleaning",
