@@ -36,8 +36,6 @@
   --color-sand: var(--sand);
   --font-serif-display: "Playfair Display", Georgia, serif;
   --font-sans-luxury: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-logo-script: "Mrs Saint Delafield", cursive;
-  --font-logo-sans: "Questrial", system-ui, sans-serif;
   --color-logo-coral: #e0705a;
 }
 
@@ -130,14 +128,6 @@
   .font-serif-luxury {
     font-family: var(--font-serif-display);
     letter-spacing: -0.02em;
-  }
-  .font-logo-script {
-    font-family: var(--font-logo-script);
-    font-weight: 400;
-    letter-spacing: 0;
-  }
-  .font-logo-sans {
-    font-family: var(--font-logo-sans);
   }
   .font-hero {
     font-family: var(--font-serif-display) !important;
