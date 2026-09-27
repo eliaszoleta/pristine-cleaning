@@ -50,7 +50,7 @@ export function Index() {
               <h1 className="font-hero text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.14]">
                 <span className="flex w-fit items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full bg-secondary border border-accent/40 font-sans text-[11px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-primary leading-normal">
                   <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
-                  House Cleaning, Airbnb Turnovers & Pressure Washing in Mesquite, NV
+                  Professional Cleaning Services in Mesquite, NV & Surrounding Areas
                 </span>
                 A cleaner home <br />
                 <span className="italic font-normal text-primary">starts right here. ✨</span>
