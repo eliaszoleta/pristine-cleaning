@@ -64,12 +64,44 @@ export function QuoteRequestForm({
   const [notes, setNotes] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !firstName || !phone) return;
+    if (!email || !firstName || !phone || isSubmitting) return;
 
     setIsSubmitting(true);
+    setSubmitError("");
+
+    // Primary: send the lead to the GHL workflow (Inbound Webhook) via our own server route.
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          phone,
+          city,
+          service,
+          property_size: propertySize,
+          frequency,
+          notes,
+          page_url: window.location.href,
+          company_website: honeypot,
+        }),
+      });
+      if (!res.ok) throw new Error(`Quote request failed (${res.status})`);
+    } catch (error) {
+      console.error(error);
+      setIsSubmitting(false);
+      setSubmitError(
+        `Sorry, we couldn't send your request. Please try again or call/text us at ${PRISTINE_INFO.phone}.`,
+      );
+      return;
+    }
 
     const trackingPayload = {
       type: "external_form_submission",
@@ -121,10 +153,8 @@ export function QuoteRequestForm({
       },
     });
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 600);
+    setIsSubmitting(false);
+    setIsSubmitted(true);
   };
 
   if (isSubmitted) {
@@ -188,6 +218,19 @@ export function QuoteRequestForm({
       </div>
 
       <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
+        {/* Spam trap: hidden from people, often filled in by bots */}
+        <div aria-hidden="true" className="absolute -left-[10000px] w-px h-px overflow-hidden">
+          <label>
+            Company website
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+            />
+          </label>
+        </div>
         {/* Cleaning details */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-1.5">
@@ -339,6 +382,15 @@ export function QuoteRequestForm({
             />
           </div>
         </div>
+
+        {submitError && (
+          <p
+            role="alert"
+            className="text-sm font-medium text-destructive bg-destructive/10 border border-destructive/30 rounded-lg px-4 py-3"
+          >
+            {submitError}
+          </p>
+        )}
 
         {/* Action button & guarantees */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">

@@ -15,6 +15,7 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ServiceAreasRouteImport } from './routes/service-areas'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ApiQuoteRouteImport } from './routes/api.quote'
 import { Route as ServiceAreasSlugRouteImport } from './routes/service-areas_.$slug'
 import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
 
@@ -48,6 +49,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiQuoteRoute = ApiQuoteRouteImport.update({
+  id: '/api/quote',
+  path: '/api/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiceAreasSlugRoute = ServiceAreasSlugRouteImport.update({
   id: '/service-areas_/$slug',
   path: '/service-areas/$slug',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/quote': typeof ApiQuoteRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/quote': typeof ApiQuoteRoute
   '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/quote': typeof ApiQuoteRoute
   '/service-areas_/$slug': typeof ServiceAreasSlugRoute
   '/services_/$slug': typeof ServicesSlugRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/service-areas'
     | '/services'
     | '/sitemap.xml'
+    | '/api/quote'
     | '/service-areas/$slug'
     | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/service-areas'
     | '/services'
     | '/sitemap.xml'
+    | '/api/quote'
     | '/service-areas/$slug'
     | '/services/$slug'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/service-areas'
     | '/services'
     | '/sitemap.xml'
+    | '/api/quote'
     | '/service-areas_/$slug'
     | '/services_/$slug'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   ServiceAreasRoute: typeof ServiceAreasRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiQuoteRoute: typeof ApiQuoteRoute
   ServiceAreasSlugRoute: typeof ServiceAreasSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/quote': {
+      id: '/api/quote'
+      path: '/api/quote'
+      fullPath: '/api/quote'
+      preLoaderRoute: typeof ApiQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/service-areas_/$slug': {
       id: '/service-areas_/$slug'
       path: '/service-areas/$slug'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceAreasRoute: ServiceAreasRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiQuoteRoute: ApiQuoteRoute,
   ServiceAreasSlugRoute: ServiceAreasSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
