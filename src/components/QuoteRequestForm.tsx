@@ -44,6 +44,77 @@ const postTrackingEvent = (
   }).catch(() => {});
 };
 
+type Option = { value: string; label: string };
+
+// The "size" and "frequency" questions depend on the service: bedrooms don't matter for
+// tile & grout or pressure washing, so those services ask about the area instead.
+const HOME_SIZE_OPTIONS: Option[] = [
+  { value: "Studio / 1 Bedroom (< 1,000 sq ft)", label: "Studio / 1 Bed (< 1,000 sq ft)" },
+  { value: "2-3 Bedrooms (1,000 - 2,200 sq ft)", label: "2-3 Bedrooms (1,000 - 2,200 sq ft)" },
+  { value: "4+ Bedrooms (2,200 - 3,500 sq ft)", label: "4+ Bedrooms (2,200 - 3,500 sq ft)" },
+  {
+    value: "Large Residence / Estate (3,500+ sq ft)",
+    label: "Large Residence / Estate (3,500+ sq ft)",
+  },
+  {
+    value: "New Build / Remodel Construction Site",
+    label: "New Build / Remodel Construction Site",
+  },
+];
+const TILE_AREA_OPTIONS: Option[] = [
+  { value: "Tile area: 1 shower or bathroom", label: "1 shower or bathroom" },
+  { value: "Tile area: 2-3 showers or bathrooms", label: "2-3 showers or bathrooms" },
+  { value: "Tile area: Kitchen floor or backsplash", label: "Kitchen floor or backsplash" },
+  { value: "Tile area: Whole-home tile floors", label: "Whole-home tile floors" },
+  { value: "Tile area: Multiple areas / not sure", label: "Multiple areas / not sure" },
+];
+const PRESSURE_WASH_AREA_OPTIONS: Option[] = [
+  { value: "Pressure washing area: Patio or porch", label: "Patio or porch" },
+  { value: "Pressure washing area: Walkways & entryway", label: "Walkways & entryway" },
+  { value: "Pressure washing area: Patio + walkways", label: "Patio + walkways" },
+  {
+    value: "Pressure washing area: Multiple areas / not sure",
+    label: "Multiple areas / not sure (add details in notes)",
+  },
+];
+const CLEANING_FREQUENCY_OPTIONS: Option[] = [
+  { value: "One-time Clean", label: "One-time Clean" },
+  { value: "Recurring Weekly", label: "Recurring Weekly" },
+  { value: "Recurring Bi-weekly", label: "Recurring Bi-weekly" },
+  { value: "Recurring Monthly", label: "Recurring Monthly" },
+  { value: "Per-Turnover (Airbnb / Host)", label: "Per-Turnover (Airbnb / Host)" },
+];
+const PROJECT_FREQUENCY_OPTIONS: Option[] = [
+  { value: "One-time", label: "One-time" },
+  { value: "Seasonal (every few months)", label: "Seasonal (every few months)" },
+  { value: "Not sure yet", label: "Not sure yet" },
+];
+
+function sizeQuestion(service: string) {
+  if (service === "Tile & Grout Cleaning")
+    return { label: "Tile Area to Clean", options: TILE_AREA_OPTIONS, fallback: 0 };
+  if (service === "Exterior Maintenance / Pressure Washing")
+    return { label: "Area to Pressure Wash", options: PRESSURE_WASH_AREA_OPTIONS, fallback: 0 };
+  return { label: "Home / Property Size", options: HOME_SIZE_OPTIONS, fallback: 1 };
+}
+
+function frequencyOptions(service: string) {
+  return service === "Tile & Grout Cleaning" ||
+    service === "Exterior Maintenance / Pressure Washing"
+    ? PROJECT_FREQUENCY_OPTIONS
+    : CLEANING_FREQUENCY_OPTIONS;
+}
+
+const defaultFrequency = (service: string) =>
+  service === "Short-Term Rental / Airbnb Turnover"
+    ? "Per-Turnover (Airbnb / Host)"
+    : frequencyOptions(service)[0]!.value;
+
+const defaultSize = (service: string) => {
+  const q = sizeQuestion(service);
+  return q.options[q.fallback]!.value;
+};
+
 interface QuoteFormProps {
   defaultService?: string | undefined;
   defaultCity?: string | undefined;
@@ -54,8 +125,22 @@ export function QuoteRequestForm({
   defaultCity = "Mesquite",
 }: QuoteFormProps) {
   const [service, setService] = useState(defaultService);
-  const [propertySize, setPropertySize] = useState("2-3 Bedrooms (1,000 - 2,200 sq ft)");
-  const [frequency, setFrequency] = useState("One-time Clean");
+  const [propertySize, setPropertySize] = useState(() => defaultSize(defaultService));
+  const [frequency, setFrequency] = useState(() => defaultFrequency(defaultService));
+  const size = sizeQuestion(service);
+  const frequencies = frequencyOptions(service);
+
+  // Switching services keeps the answers if they still apply, otherwise resets to that service's defaults.
+  const changeService = (next: string) => {
+    setService(next);
+    if (!sizeQuestion(next).options.some((o) => o.value === propertySize)) {
+      setPropertySize(defaultSize(next));
+    }
+    const nextFrequencies = frequencyOptions(next);
+    if (!nextFrequencies.some((o) => o.value === frequency)) {
+      setFrequency(defaultFrequency(next));
+    }
+  };
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -239,7 +324,7 @@ export function QuoteRequestForm({
             </label>
             <select
               value={service}
-              onChange={(e) => setService(e.target.value)}
+              onChange={(e) => changeService(e.target.value)}
               className="w-full bg-secondary border border-border rounded-lg px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-accent focus:outline-hidden"
             >
               <option value="Short-Term Rental / Airbnb Turnover">
@@ -260,28 +345,18 @@ export function QuoteRequestForm({
 
           <div className="space-y-1.5">
             <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Home / Property Size
+              {size.label}
             </label>
             <select
               value={propertySize}
               onChange={(e) => setPropertySize(e.target.value)}
               className="w-full bg-secondary border border-border rounded-lg px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-accent focus:outline-hidden"
             >
-              <option value="Studio / 1 Bedroom (< 1,000 sq ft)">
-                Studio / 1 Bed (&lt; 1,000 sq ft)
-              </option>
-              <option value="2-3 Bedrooms (1,000 - 2,200 sq ft)">
-                2-3 Bedrooms (1,000 - 2,200 sq ft)
-              </option>
-              <option value="4+ Bedrooms (2,200 - 3,500 sq ft)">
-                4+ Bedrooms (2,200 - 3,500 sq ft)
-              </option>
-              <option value="Large Residence / Estate (3,500+ sq ft)">
-                Large Residence / Estate (3,500+ sq ft)
-              </option>
-              <option value="New Build / Remodel Construction Site">
-                New Build / Remodel Construction Site
-              </option>
+              {size.options.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -294,11 +369,11 @@ export function QuoteRequestForm({
               onChange={(e) => setFrequency(e.target.value)}
               className="w-full bg-secondary border border-border rounded-lg px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-accent focus:outline-hidden"
             >
-              <option value="One-time Clean">One-time Clean</option>
-              <option value="Recurring Weekly">Recurring Weekly</option>
-              <option value="Recurring Bi-weekly">Recurring Bi-weekly</option>
-              <option value="Recurring Monthly">Recurring Monthly</option>
-              <option value="Per-Turnover (Airbnb / Host)">Per-Turnover (Airbnb / Host)</option>
+              {frequencies.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
             </select>
           </div>
         </div>
