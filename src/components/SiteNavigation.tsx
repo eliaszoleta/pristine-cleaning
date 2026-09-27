@@ -45,10 +45,15 @@ export function SiteHeader() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-2xl sm:text-3xl tracking-tight font-bold text-foreground group-hover:text-primary transition-colors leading-none">
-              Pristine Cleaning
+            <span className="flex flex-col leading-none">
+              <span className="font-logo-script text-[2.1rem] sm:text-[3.1rem] text-foreground group-hover:text-primary transition-colors leading-none pt-2">
+                Pristine
+              </span>
+              <span className="font-logo-sans text-xs sm:text-sm uppercase tracking-[0.14em] text-logo-coral ml-5 sm:ml-7 -mt-2.5 sm:-mt-4">
+                Cleaning
+              </span>
             </span>
-            <span className="text-[11px] sm:text-xs tracking-wider uppercase font-semibold text-muted-foreground mt-1.5">
+            <span className="text-[10px] sm:text-xs tracking-wider uppercase font-semibold text-muted-foreground mt-1">
               Residential • Short-Term Rental • Turnovers
             </span>
           </div>
