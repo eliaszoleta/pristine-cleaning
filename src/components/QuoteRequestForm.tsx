@@ -45,10 +45,14 @@ const postTrackingEvent = (
 };
 
 interface QuoteFormProps {
-  defaultService?: string;
+  defaultService?: string | undefined;
+  defaultCity?: string | undefined;
 }
 
-export function QuoteRequestForm({ defaultService = "Deep Residential Cleaning" }: QuoteFormProps) {
+export function QuoteRequestForm({
+  defaultService = "Deep Residential Cleaning",
+  defaultCity = "Mesquite",
+}: QuoteFormProps) {
   const [service, setService] = useState(defaultService);
   const [propertySize, setPropertySize] = useState("2-3 Bedrooms (1,000 - 2,200 sq ft)");
   const [frequency, setFrequency] = useState("One-time Clean");
@@ -56,7 +60,7 @@ export function QuoteRequestForm({ defaultService = "Deep Residential Cleaning" 
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [city, setCity] = useState("Mesquite");
+  const [city, setCity] = useState(defaultCity);
   const [notes, setNotes] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);

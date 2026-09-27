@@ -1,36 +1,25 @@
+import { pageHead, breadcrumbJsonLd } from "../lib/seo";
+import { servicePathForSpecialty, AREA_PAGES } from "../lib/seo-content";
+import { ServiceLinkGrid } from "../components/SeoSections";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CORE_SPECIALTIES, PRISTINE_INFO } from "../lib/business-data";
 import { QuoteRequestForm } from "../components/QuoteRequestForm";
 import { CheckCircle2, Sparkles, ArrowRight, Star, Phone } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Cleaning Specialties & Services | Pristine Cleaning Mesquite NV" },
-      {
-        name: "description",
-        content:
-          "Explore Pristine Cleaning services: Short-Term Rental/Airbnb Turnovers, Deep Residential Cleaning, Standard Interior/Exterior Maintenance, and Post-Construction Clean-ups in Mesquite and surrounding areas.",
-      },
-      {
-        property: "og:title",
-        content: "Cleaning Specialties & Services | Pristine Cleaning Mesquite NV",
-      },
-      {
-        property: "og:description",
-        content:
-          "We handle the tough jobs so you don’t have to! Short-term rental turnovers, deep cleans, routine maintenance, and post-construction clean-ups.",
-      },
-      {
-        property: "og:image",
-        content: PRISTINE_INFO.logoUrl,
-      },
-      {
-        name: "twitter:image",
-        content: PRISTINE_INFO.logoUrl,
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Cleaning Services in Mesquite, NV | Pristine Cleaning",
+      description:
+        "Airbnb & vacation rental turnovers, deep house cleaning, recurring maid service, move-in/move-out and post-construction cleaning in Mesquite NV & St. George UT.",
+      path: "/services",
+      jsonLd: [
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ]),
+      ],
+    }),
   component: ServicesPage,
 });
 
@@ -87,7 +76,12 @@ export function ServicesPage() {
                     <span>Pristine Standard</span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-                    {service.title}
+                    <Link
+                      to={servicePathForSpecialty(service.id)}
+                      className="hover:text-primary hover:underline underline-offset-4"
+                    >
+                      {service.title}
+                    </Link>
                   </h2>
                   <p className="text-sm font-medium text-primary">{service.summary}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed pt-1">
@@ -109,6 +103,12 @@ export function ServicesPage() {
                 </div>
 
                 <div className="pt-4 flex flex-wrap items-center gap-4">
+                  <Link
+                    to={servicePathForSpecialty(service.id)}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-background text-foreground text-xs font-semibold uppercase tracking-widest hover:bg-secondary transition-all border border-border"
+                  >
+                    <span>Full Details</span>
+                  </Link>
                   <a
                     href="#quote-form"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-widest hover:bg-primary/95 transition-all border border-accent/40 shadow"
@@ -128,6 +128,24 @@ export function ServicesPage() {
             </div>
           );
         })}
+      </section>
+
+      <ServiceLinkGrid title="Browse Every Cleaning Service" />
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Where We Clean</h2>
+        <div className="flex flex-wrap gap-3">
+          {AREA_PAGES.map((area) => (
+            <Link
+              key={area.slug}
+              to="/service-areas/$slug"
+              params={{ slug: area.slug }}
+              className="px-4 py-2.5 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:border-accent hover:text-primary transition-colors"
+            >
+              House cleaning in {area.city}, {area.state}
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Quote Request embedded on Services page */}

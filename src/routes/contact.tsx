@@ -1,35 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { pageHead, breadcrumbJsonLd } from "../lib/seo";
+import { AREA_PAGES } from "../lib/seo-content";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PRISTINE_INFO } from "../lib/business-data";
 import { QuoteRequestForm } from "../components/QuoteRequestForm";
 import { Phone, Mail, MapPin, Clock, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact & Service Area | Pristine Cleaning Mesquite NV" },
-      {
-        name: "description",
-        content:
-          "Contact Pristine Cleaning at (725) 225-2466 or book online. Serving Mesquite NV, Bunkerville NV, Saint George UT, and Littlefield AZ with white-glove cleaning.",
-      },
-      { property: "og:title", content: "Contact Pristine Cleaning | Mesquite NV & St. George UT" },
-      {
-        property: "og:description",
-        content:
-          "Get a quick quote or schedule luxury residential, turnover, or commercial cleaning in Mesquite NV. Located at 121 Jacaranda Way.",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://vibe.filesafe.space/1790470415330648323/assets/f3c923f2-7d88-4948-b69e-d48fcd5918f9.png",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://vibe.filesafe.space/1790470415330648323/assets/f3c923f2-7d88-4948-b69e-d48fcd5918f9.png",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Contact Pristine Cleaning | Free Cleaning Quote in Mesquite, NV",
+      description:
+        "Call or text (725) 225-2466 or request a free online quote. Pristine Cleaning serves Mesquite & Bunkerville NV, St. George UT, and Littlefield & Scenic AZ.",
+      path: "/contact",
+      jsonLd: [
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]),
+      ],
+    }),
   component: ContactPage,
 });
 
@@ -137,19 +126,23 @@ function ContactPage() {
                 We service properties across the Virgin River Valley and the Southern Utah corridor:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
-                {PRISTINE_INFO.serviceAreas.map((area) => (
-                  <div
-                    key={area}
-                    className="flex items-center gap-2 text-xs font-medium text-foreground"
+                {AREA_PAGES.map((area) => (
+                  <Link
+                    key={area.slug}
+                    to="/service-areas/$slug"
+                    params={{ slug: area.slug }}
+                    className="flex items-center gap-2 text-xs font-medium text-foreground hover:text-primary hover:underline underline-offset-4"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
-                    <span>{area}</span>
-                  </div>
+                    <span>
+                      {area.city}, {area.state}
+                    </span>
+                  </Link>
                 ))}
               </div>
               <div className="p-3 bg-secondary/80 rounded-xl border border-border/60 text-[11px] text-muted-foreground mt-2">
-                Need service outside standard boundaries? Contact us to discuss custom travel
-                arrangements for luxury estates and commercial campuses.
+                Don't see your town? We also serve nearby communities across the Virgin River
+                Valley. Contact us and we'll let you know if we can reach you.
               </div>
             </div>
           </div>

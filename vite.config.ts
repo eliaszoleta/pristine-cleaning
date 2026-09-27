@@ -7,9 +7,22 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@leadconnector/vite-tanstack-config";
 
+// Public site URL used for canonical links, Open Graph tags, JSON-LD and the sitemap.
+// Set SITE_URL in Vercel to override; otherwise Vercel's production domain is used
+// (your custom domain once it's connected, else the *.vercel.app domain).
+const siteUrl = (
+  process.env["SITE_URL"] ||
+  (process.env["VERCEL_PROJECT_PRODUCTION_URL"]
+    ? `https://${process.env["VERCEL_PROJECT_PRODUCTION_URL"]}`
+    : "http://localhost:3000")
+).replace(/\/+$/, "");
+
 export default defineConfig({
   // Deploy target: Vercel. Nitro writes the build to .vercel/output, which Vercel serves directly.
   nitro: { preset: "vercel" },
+  vite: {
+    define: { __SITE_URL__: JSON.stringify(siteUrl) },
+  },
   // Browser errors stay in the trusted parent-frame console-log flow;
   // do not expose the bridge collector on the public sandbox tunnel.
   devServerBridge: { errorCollector: false },
@@ -19,6 +32,8 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: {
-    allowedHosts: true, entry: "server" },
+      allowedHosts: true,
+      entry: "server",
+    },
   },
 });

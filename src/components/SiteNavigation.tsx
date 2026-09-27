@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { PRISTINE_INFO } from "../lib/business-data";
+import { AREA_PAGES, SERVICE_PAGES } from "../lib/seo-content";
 import { Phone, Mail, Sparkles, Menu, X, MapPin } from "lucide-react";
 
 export function SiteHeader() {
@@ -76,11 +77,18 @@ export function SiteHeader() {
             Specialties & Services
           </Link>
           <Link
+            to="/service-areas"
+            activeProps={{ className: "text-primary font-bold border-b-2 border-accent pb-1" }}
+            className="text-foreground/80 hover:text-foreground transition-colors"
+          >
+            Service Areas
+          </Link>
+          <Link
             to="/contact"
             activeProps={{ className: "text-primary font-bold border-b-2 border-accent pb-1" }}
             className="text-foreground/80 hover:text-foreground transition-colors"
           >
-            Contact & Service Area
+            Contact
           </Link>
         </nav>
 
@@ -123,11 +131,18 @@ export function SiteHeader() {
               Specialties & Services
             </Link>
             <Link
+              to="/service-areas"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 border-b border-border/50 text-foreground"
+            >
+              Service Areas
+            </Link>
+            <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="py-2 border-b border-border/50 text-foreground"
             >
-              Contact & Service Area
+              Contact
             </Link>
           </div>
           <div className="pt-2 flex flex-col gap-3">
@@ -189,30 +204,19 @@ export function SiteFooter() {
 
           {/* Quick links */}
           <div className="space-y-3">
-            <h4 className="font-semibold text-white tracking-wide uppercase text-xs">
-              Specialties
-            </h4>
+            <h4 className="font-semibold text-white tracking-wide uppercase text-xs">Services</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/75">
-              <li>
-                <Link to="/services" className="hover:text-accent transition-colors">
-                  Short-Term Rental / Airbnb Turnovers
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-accent transition-colors">
-                  Deep Residential Cleaning
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-accent transition-colors">
-                  Standard Interior & Exterior Maintenance
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-accent transition-colors">
-                  Post-Construction Clean-ups
-                </Link>
-              </li>
+              {SERVICE_PAGES.map((page) => (
+                <li key={page.slug}>
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: page.slug }}
+                    className="hover:text-accent transition-colors"
+                  >
+                    {page.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -225,10 +229,16 @@ export function SiteFooter() {
               Proudly serving Mesquite and surrounding areas:
             </p>
             <ul className="space-y-2 text-sm text-primary-foreground/75">
-              {PRISTINE_INFO.serviceAreas.map((area) => (
-                <li key={area} className="flex items-center gap-1.5">
+              {AREA_PAGES.map((area) => (
+                <li key={area.slug} className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  {area}
+                  <Link
+                    to="/service-areas/$slug"
+                    params={{ slug: area.slug }}
+                    className="hover:text-accent transition-colors"
+                  >
+                    House cleaning in {area.city}, {area.state}
+                  </Link>
                 </li>
               ))}
             </ul>

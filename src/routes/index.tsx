@@ -1,3 +1,6 @@
+import { pageHead, faqJsonLd } from "../lib/seo";
+import { HOME_FAQS, servicePathForSpecialty, AREA_PAGES } from "../lib/seo-content";
+import { FaqSection } from "../components/SeoSections";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PRISTINE_INFO, CORE_SPECIALTIES, TESTIMONIALS } from "../lib/business-data";
 import { QuoteRequestForm } from "../components/QuoteRequestForm";
@@ -18,35 +21,14 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      {
-        title: "Pristine Cleaning | Short-Term Rental & Residential Cleaners Mesquite NV",
-      },
-      {
-        name: "description",
-        content:
-          "A cleaner home starts here! Pristine Cleaning specializes in Short-Term Rental/Airbnb Turnovers, Deep Residential Cleaning, Standard Interior/Exterior Maintenance, and Post-Construction Clean-ups in Mesquite and surrounding areas.",
-      },
-      {
-        property: "og:title",
-        content: "Pristine Cleaning | Mesquite NV & Surrounding Areas",
-      },
-      {
-        property: "og:description",
-        content:
-          "Let Pristine Cleaning take care of the mess so you can enjoy more of what matters.",
-      },
-      {
-        property: "og:image",
-        content: PRISTINE_INFO.logoUrl,
-      },
-      {
-        name: "twitter:image",
-        content: PRISTINE_INFO.logoUrl,
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "House Cleaning & Airbnb Turnovers in Mesquite, NV | Pristine Cleaning",
+      description:
+        "Pristine Cleaning offers Airbnb turnovers, deep house cleaning, recurring cleaning, move-out and post-construction cleaning in Mesquite NV & St. George UT. 20% off.",
+      path: "/",
+      jsonLd: [faqJsonLd(HOME_FAQS)],
+    }),
   component: Index,
 });
 
@@ -63,14 +45,11 @@ export function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left copy */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary border border-accent/40 text-xs font-semibold uppercase tracking-widest text-primary">
-                <Sparkles className="w-3.5 h-3.5 text-accent" />
-                <span>Mesquite & Surrounding Areas</span>
-              </div>
-
-              {/* Special Promo Callout removed */}
-
               <h1 className="font-hero text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.14]">
+                <span className="flex w-fit items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full bg-secondary border border-accent/40 font-sans text-xs font-semibold uppercase tracking-widest text-primary leading-normal">
+                  <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
+                  House Cleaning & Airbnb Turnovers in Mesquite, NV
+                </span>
                 A cleaner home <br />
                 <span className="italic font-normal text-primary">starts right here. ✨</span>
               </h1>
@@ -217,7 +196,12 @@ export function Index() {
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {item.title}
+                    <Link
+                      to={servicePathForSpecialty(item.id)}
+                      className="hover:underline underline-offset-4"
+                    >
+                      {item.title}
+                    </Link>
                   </h3>
                   <p className="text-xs text-primary font-medium">{item.summary}</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
@@ -233,13 +217,21 @@ export function Index() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#quote-section"
-                    className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-secondary hover:bg-primary hover:text-white text-foreground text-xs font-semibold uppercase tracking-wider transition-colors border border-border"
-                  >
-                    <span>Request Quote for This Service</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <Link
+                      to={servicePathForSpecialty(item.id)}
+                      className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-background hover:bg-secondary text-foreground text-xs font-semibold uppercase tracking-wider transition-colors border border-border"
+                    >
+                      <span>Learn More</span>
+                    </Link>
+                    <a
+                      href="#quote-section"
+                      className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-secondary hover:bg-primary hover:text-white text-foreground text-xs font-semibold uppercase tracking-wider transition-colors border border-border"
+                    >
+                      <span>Get a Quote</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -343,6 +335,8 @@ export function Index() {
         </div>
       </section>
 
+      <FaqSection faqs={HOME_FAQS} />
+
       {/* Service Area Callout */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="bg-gradient-to-br from-secondary via-card to-secondary p-8 sm:p-12 rounded-3xl border border-border shadow-lg flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -351,21 +345,24 @@ export function Index() {
               <MapPin className="w-4 h-4" />
               <span>Service Area</span>
             </div>
-            <h3 className="text-3xl font-bold text-foreground">
+            <h2 className="text-3xl font-bold text-foreground">
               Proudly Serving Mesquite & Surrounding Areas
-            </h3>
+            </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              We cover Mesquite NV, Bunkerville NV, Saint George UT, Littlefield AZ, and neighboring
-              communities. Let us take care of the mess so you can enjoy more of what matters.
+              We cover Mesquite and Bunkerville NV, St. George UT, Littlefield and Scenic AZ, and
+              neighboring communities in the Virgin River Valley. Let us take care of the mess so
+              you can enjoy more of what matters.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
-              {PRISTINE_INFO.serviceAreas.map((area) => (
-                <span
-                  key={area}
-                  className="px-3 py-1 bg-background border border-border rounded-full text-xs font-medium text-foreground"
+              {AREA_PAGES.map((area) => (
+                <Link
+                  key={area.slug}
+                  to="/service-areas/$slug"
+                  params={{ slug: area.slug }}
+                  className="px-3 py-1 bg-background border border-border rounded-full text-xs font-medium text-foreground hover:border-accent hover:text-primary transition-colors"
                 >
-                  {area}
-                </span>
+                  {area.city}, {area.state}
+                </Link>
               ))}
             </div>
           </div>

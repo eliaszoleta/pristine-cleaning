@@ -25,8 +25,7 @@ export const PRISTINE_INFO: BusinessInfo = {
   headline: "A cleaner home starts here! ✨",
   promoBadge: "New Customer Special",
   promoDiscount: "20% off your first service",
-  logoUrl:
-    "https://vibe.filesafe.space/1790470415330648323/attachments/41cf238d-cdd8-4feb-b925-31eb62fd2971.jpg",
+  logoUrl: "/logo.jpg",
   phone: "(725) 225-2466",
   phoneRaw: "7252252466",
   email: "cmancillas930@gmail.com",

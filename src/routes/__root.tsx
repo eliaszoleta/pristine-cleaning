@@ -12,6 +12,60 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportVibeError } from "../lib/vibe-error-reporting";
 import { SiteHeader, SiteFooter } from "../components/SiteNavigation";
+import { PRISTINE_INFO } from "../lib/business-data";
+import { AREA_PAGES, SERVICE_PAGES } from "../lib/seo-content";
+import { BUSINESS_ID, DEFAULT_OG_IMAGE, WEBSITE_ID } from "../lib/seo";
+import { absoluteUrl } from "../lib/site-config";
+
+// Site-wide LocalBusiness data: tells Google who the business is, where it is, when it's open
+// and which cities it serves. Keep it in sync with PRISTINE_INFO.
+const LOCAL_BUSINESS_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  "@id": BUSINESS_ID,
+  name: PRISTINE_INFO.name,
+  description:
+    "Local cleaning company in Mesquite, NV offering Airbnb and vacation rental turnovers, deep house cleaning, recurring house cleaning, move-in/move-out cleaning and post-construction cleaning.",
+  url: absoluteUrl("/"),
+  logo: absoluteUrl(PRISTINE_INFO.logoUrl),
+  image: absoluteUrl(DEFAULT_OG_IMAGE),
+  telephone: `+1-${PRISTINE_INFO.phoneRaw.slice(0, 3)}-${PRISTINE_INFO.phoneRaw.slice(3, 6)}-${PRISTINE_INFO.phoneRaw.slice(6)}`,
+  email: PRISTINE_INFO.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: PRISTINE_INFO.address,
+    addressLocality: PRISTINE_INFO.city,
+    addressRegion: PRISTINE_INFO.state,
+    postalCode: PRISTINE_INFO.zip,
+    addressCountry: "US",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "07:00",
+      closes: "19:00",
+    },
+  ],
+  areaServed: AREA_PAGES.map((area) => ({
+    "@type": "City",
+    name: area.city,
+    containedInPlace: { "@type": "State", name: area.stateName },
+  })),
+  sameAs: [PRISTINE_INFO.facebookUrl],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Cleaning services",
+    itemListElement: SERVICE_PAGES.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        url: absoluteUrl(`/services/${service.slug}`),
+      },
+    })),
+  },
+};
 
 function NotFoundComponent() {
   return (
@@ -78,26 +132,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pristine Cleaning | Luxury Residential & Commercial Cleaning" },
+      { title: "Pristine Cleaning | House Cleaning & Airbnb Turnovers in Mesquite, NV" },
       {
         name: "description",
         content:
-          "Professional white-glove residential cleaning, vacation rental turnovers, move-out cleans and commercial cleaning in Mesquite NV and St. George UT.",
+          "House cleaning, Airbnb turnovers, deep cleaning, move-out and post-construction cleaning in Mesquite NV, Bunkerville, St. George UT and Littlefield AZ.",
       },
-      { name: "author", content: "Pristine Cleaning" },
-      {
-        property: "og:title",
-        content: "Pristine Cleaning | White-Glove Residential & Turnover Services",
-      },
-      {
-        property: "og:description",
-        content:
-          "Immaculate residential, Airbnb turnover, and commercial cleaning in Mesquite NV, Bunkerville, and Saint George UT.",
-      },
+      { name: "author", content: PRISTINE_INFO.name },
+      { name: "theme-color", content: "#0f1f2e" },
+      { name: "geo.region", content: "US-NV" },
+      { name: "geo.placename", content: "Mesquite" },
+      { property: "og:site_name", content: PRISTINE_INFO.name },
+      { property: "og:locale", content: "en_US" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: absoluteUrl(DEFAULT_OG_IMAGE) },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(LOCAL_BUSINESS_JSON_LD),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": WEBSITE_ID,
+          url: absoluteUrl("/"),
+          name: PRISTINE_INFO.name,
+          publisher: { "@id": BUSINESS_ID },
+        }),
+      },
+    ],
     links: [
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       {
         rel: "preconnect",
         href: "https://fonts.googleapis.com",
