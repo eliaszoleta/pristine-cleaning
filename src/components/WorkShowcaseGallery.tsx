@@ -150,7 +150,7 @@ export function WorkShowcaseGallery() {
               <span className="text-xs font-medium text-muted-foreground">Select Project:</span>
               <span className="text-[11px] text-accent font-medium">Auto-sliding</span>
             </div>
-            <div className="grid grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-1">
+            <div className="grid grid-cols-5 gap-2">
               {WORK_GALLERY.map((item, idx) => (
                 <button
                   key={item.id}
@@ -184,7 +184,7 @@ export function WorkShowcaseGallery() {
       </div>
 
       {/* Progress dots */}
-      <div className="flex justify-center items-center gap-2 mt-6">
+      <div className="flex flex-wrap justify-center items-center gap-2 mt-6">
         {WORK_GALLERY.map((item, idx) => (
           <button
             key={item.id}

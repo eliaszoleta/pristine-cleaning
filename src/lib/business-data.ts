@@ -376,4 +376,200 @@ export const WORK_GALLERY: GalleryProject[] = [
     description:
       "Complete transformation from a dust-covered jobsite with floor clutter to a pristine, polished modern master bath ready for immediate occupancy.",
   },
+  {
+    id: "oven-interior-degrease-before-after",
+    title: "Oven Interior Degreasing & Glass Door Restoration (Before & After)",
+    category: "Deep Residential Cleaning",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-oven-degreasing-before-after.jpg",
+    seoFilename: "mesquite-oven-degreasing-before-after.jpg",
+    seoAlt:
+      "Oven interior and door glass degreasing before and after deep cleaning in Mesquite NV by Pristine Cleaning",
+    seoTitle: "Oven Interior Degreasing & Baked-On Grease Removal in Mesquite, NV",
+    seoDescription:
+      "Baked-on grease and carbon buildup lifted from the oven floor, racks, and inner door glass for a like-new finish.",
+    highlights: [
+      "Baked-on grease & carbon buildup removal",
+      "Inner door glass cleared streak-free",
+      "Rack and cavity wall degreasing",
+    ],
+    description:
+      "Before-and-after proof of a heavily soiled oven brought back to a clean, clear-glass interior ready for cooking.",
+  },
+  {
+    id: "shower-glass-hard-water-before-after",
+    title: "Shower Glass Hard Water Spot Removal (Before & After)",
+    category: "Deep Residential Cleaning",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-shower-glass-hard-water-spots-before-after.jpg",
+    seoFilename: "mesquite-shower-glass-hard-water-spots-before-after.jpg",
+    seoAlt:
+      "Glass shower door hard water spots and mineral film removed before and after in Mesquite NV by Pristine Cleaning",
+    seoTitle: "Shower Door Hard Water Spot & Mineral Film Removal in Mesquite, NV",
+    seoDescription:
+      "Heavy hard water spotting and mineral film cleared from a glass shower enclosure, restoring a crystal-clear view of the tile.",
+    highlights: [
+      "Hard water spot & mineral film removal",
+      "Glass enclosure polished streak-free",
+      "Black frame and handle wipe-down",
+    ],
+    description:
+      "Cloudy, spotted shower glass turned fully transparent again, showing off the marble-look tile and matte black fixtures.",
+  },
+  {
+    id: "walk-in-tile-shower-deep-clean",
+    title: "Walk-In Tile Shower Deep Scrub & Detail",
+    category: "Deep Residential Cleaning",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-walk-in-tile-shower-deep-clean.jpg",
+    seoFilename: "mesquite-walk-in-tile-shower-deep-clean.jpg",
+    seoAlt:
+      "Clean white tile walk-in shower with penny tile floor after deep cleaning in Mesquite NV",
+    seoTitle: "Walk-In Shower Tile, Grout & Fixture Deep Clean in Mesquite, NV",
+    seoDescription:
+      "Floor-to-ceiling white tile walls, penny tile floor, and brushed nickel fixtures scrubbed and rinsed spotless.",
+    highlights: [
+      "Tile wall and grout line scrubbing",
+      "Penny tile floor and drain detailing",
+      "Fixture and shelf niche wipe-down",
+    ],
+    description:
+      "A bright, fresh walk-in shower with clean grout lines, spotless tile, and polished fixtures.",
+  },
+  {
+    id: "airbnb-living-room-towel-staging",
+    title: "Vacation Rental Living Room Turnover & Linen Staging",
+    category: "Short-Term Rental / Airbnb Turnover",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-airbnb-living-room-turnover-towel-staging.jpg",
+    seoFilename: "mesquite-airbnb-living-room-turnover-towel-staging.jpg",
+    seoAlt: "Airbnb living room turnover with fresh folded towels staged on sofas in Mesquite NV",
+    seoTitle: "Short-Term Rental Living Room Turnover & Fresh Linen Staging in Mesquite, NV",
+    seoDescription:
+      "Guest-ready living room reset with fresh folded towels staged, tile floors mopped, and tables and rugs refreshed.",
+    highlights: [
+      "Fresh towel sets folded and staged",
+      "Tile floor mopping and rug vacuuming",
+      "Coffee table and surface sanitizing",
+    ],
+    description:
+      "Turnover-ready vacation rental living space with fresh linens laid out and every surface wiped for the next guests.",
+  },
+  {
+    id: "open-concept-kitchen-living-turnover",
+    title: "Open Kitchen & Living Area Rental Turnover",
+    category: "Short-Term Rental / Airbnb Turnover",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-open-concept-kitchen-living-room-turnover.jpg",
+    seoFilename: "mesquite-open-concept-kitchen-living-room-turnover.jpg",
+    seoAlt:
+      "Open concept kitchen and living room with sectional and island after rental turnover cleaning in Mesquite NV",
+    seoTitle: "Open-Concept Kitchen & Living Room Turnover Cleaning in Mesquite, NV",
+    seoDescription:
+      "Kitchen island, bar stools, stainless appliances, sectional, and plank floors all reset between guest stays.",
+    highlights: [
+      "Island countertop and bar stool sanitizing",
+      "Stainless appliance wipe-down",
+      "Plank floor vacuum and mop",
+    ],
+    description:
+      "A wide-open kitchen and living area cleaned top to bottom and staged for the next check-in.",
+  },
+  {
+    id: "guest-bedroom-rental-turnover",
+    title: "Guest Bedroom Turnover & Fresh Bed Making",
+    category: "Short-Term Rental / Airbnb Turnover",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-vacation-rental-guest-bedroom-turnover.jpg",
+    seoFilename: "mesquite-vacation-rental-guest-bedroom-turnover.jpg",
+    seoAlt:
+      "Vacation rental guest bedroom with freshly made bed after turnover cleaning in Mesquite NV",
+    seoTitle: "Vacation Rental Guest Bedroom Turnover in Mesquite, NV",
+    seoDescription:
+      "Fresh linens, a neatly made bed, dusted ceiling fan, and vacuumed carpet in a guest-ready rental bedroom.",
+    highlights: [
+      "Fresh linen change and bed making",
+      "Ceiling fan and surface dusting",
+      "Carpet vacuuming and desk wipe-down",
+    ],
+    description:
+      "A calm, spotless guest bedroom reset with fresh bedding and clean surfaces for incoming guests.",
+  },
+  {
+    id: "themed-bedroom-airbnb-turnover",
+    title: "Themed Airbnb Bedroom Refresh",
+    category: "Short-Term Rental / Airbnb Turnover",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-airbnb-themed-bedroom-turnover.jpg",
+    seoFilename: "mesquite-airbnb-themed-bedroom-turnover.jpg",
+    seoAlt:
+      "Airbnb themed bedroom with fresh bedding and clean nightstands after turnover in Mesquite NV",
+    seoTitle: "Airbnb Bedroom Linen Change & Detail Clean in Mesquite, NV",
+    seoDescription:
+      "Crisp bedding, dusted nightstands and lamps, and freshly vacuumed carpet in a themed rental bedroom.",
+    highlights: [
+      "Crisp linen change and pillow staging",
+      "Nightstand, lamp, and wall art dusting",
+      "Carpet vacuuming",
+    ],
+    description: "A neatly staged themed bedroom ready for 5-star guest reviews.",
+  },
+  {
+    id: "short-term-rental-bedroom-reset",
+    title: "Short-Term Rental Bedroom Reset & Workspace Detail",
+    category: "Short-Term Rental / Airbnb Turnover",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-short-term-rental-bedroom-reset.jpg",
+    seoFilename: "mesquite-short-term-rental-bedroom-reset.jpg",
+    seoAlt:
+      "Short term rental bedroom with made bed, desk, and clean carpet after turnover in Mesquite NV",
+    seoTitle: "Short-Term Rental Bedroom & Workspace Turnover in Mesquite, NV",
+    seoDescription:
+      "Freshly made bed, wiped desk and TV area, dusted decor, and vacuumed carpet in a bright rental bedroom.",
+    highlights: [
+      "Bed making with fresh linens and accent pillows",
+      "Desk, TV, and decor dusting",
+      "Window sill and carpet detailing",
+    ],
+    description: "A bright, guest-ready bedroom with a clean workspace and fresh bedding.",
+  },
+  {
+    id: "king-bedroom-guest-ready",
+    title: "King Bedroom Guest-Ready Turnover",
+    category: "Short-Term Rental / Airbnb Turnover",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-airbnb-king-bedroom-guest-ready.jpg",
+    seoFilename: "mesquite-airbnb-king-bedroom-guest-ready.jpg",
+    seoAlt:
+      "Airbnb king bedroom with fresh bedding and luggage rack after turnover cleaning in Mesquite NV",
+    seoTitle: "Airbnb King Bedroom Turnover Cleaning in Mesquite, NV",
+    seoDescription:
+      "King bed dressed with fresh linens, luggage rack set out, and carpet and surfaces cleaned for arrival.",
+    highlights: [
+      "King bed linen change and staging",
+      "Luggage rack and guest amenity setup",
+      "Carpet vacuuming and dusting",
+    ],
+    description: "A welcoming king bedroom reset and staged for the next guest arrival.",
+  },
+  {
+    id: "double-vanity-bathroom-turnover",
+    title: "Double Vanity Bathroom Turnover & Towel Staging",
+    category: "Short-Term Rental / Airbnb Turnover",
+    location: "Mesquite, NV",
+    imageUrl: "/gallery/mesquite-double-vanity-bathroom-turnover.jpg",
+    seoFilename: "mesquite-double-vanity-bathroom-turnover.jpg",
+    seoAlt:
+      "Double vanity bathroom with granite counters and rolled towels after rental turnover in Mesquite NV",
+    seoTitle: "Double Vanity Bathroom Turnover Cleaning in Mesquite, NV",
+    seoDescription:
+      "Granite double vanity, sinks, mirror, and plank floors cleaned with fresh rolled towels staged for guests.",
+    highlights: [
+      "Granite counter and sink sanitizing",
+      "Streak-free mirror cleaning",
+      "Fresh towel rolling and staging",
+    ],
+    description:
+      "A sparkling double vanity bathroom with fresh towels and spotless counters, ready for guests.",
+  },
 ];
