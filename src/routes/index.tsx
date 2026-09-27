@@ -174,6 +174,9 @@ export function Index() {
         <QuoteRequestForm />
       </section>
 
+      {/* Auto-sliding Work Showcase Gallery with SEO Metadata */}
+      <WorkShowcaseGallery />
+
       {/* 4 Core Specialties Breakdown */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-border pb-6">
@@ -296,9 +299,6 @@ export function Index() {
           </div>
         </div>
       </section>
-
-      {/* Auto-sliding Work Showcase Gallery with SEO Metadata */}
-      <WorkShowcaseGallery />
 
       {/* Testimonials */}
       <section className="bg-primary text-primary-foreground py-16">
