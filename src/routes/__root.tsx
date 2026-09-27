@@ -203,6 +203,14 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        {/* GoHighLevel chat widget (bottom-right on every page; position/colors are set in GHL).
+            Lives in the shell, not head(), so client-side navigation doesn't load it again. */}
+        <script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6ab8c53050fc24ace6c97a47"
+          defer
+        />
       </body>
     </html>
   );
