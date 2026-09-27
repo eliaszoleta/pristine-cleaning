@@ -142,6 +142,9 @@ export function Index() {
         </div>
       </section>
 
+      {/* Auto-sliding Work Showcase Gallery with SEO Metadata */}
+      <WorkShowcaseGallery />
+
       {/* Quote Request Section */}
       <section id="quote-section" className="scroll-mt-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-2 mb-8">
@@ -158,9 +161,6 @@ export function Index() {
         </div>
         <QuoteRequestForm />
       </section>
-
-      {/* Auto-sliding Work Showcase Gallery with SEO Metadata */}
-      <WorkShowcaseGallery />
 
       {/* 4 Core Specialties Breakdown */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
