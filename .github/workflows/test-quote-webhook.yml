@@ -1,0 +1,40 @@
+# One-time diagnostic: sends a test quote through the live site's /api/quote and directly to the
+# GHL Inbound Webhook, so GHL receives a sample request for field mapping. Safe to delete afterwards.
+name: Test quote webhook
+on:
+  push:
+    branches: [claude/funny-hopper-5ihafs]
+    paths: [.github/workflows/test-quote-webhook.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  deployments: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find live Vercel URL
+        id: url
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for env in Production production; do
+            dep=$(gh api "repos/${{ github.repository }}/deployments?environment=$env&per_page=1" --jq '.[0].id' 2>/dev/null || true)
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              url=$(gh api "repos/${{ github.repository }}/deployments/$dep/statuses" --jq '[.[] | select(.environment_url != null and .environment_url != "")][0].environment_url' 2>/dev/null || true)
+              [ -n "$url" ] && [ "$url" != "null" ] && break
+            fi
+          done
+          echo "Live URL: ${url:-not found}"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Test through the live site (/api/quote)
+        if: steps.url.outputs.url != ''
+        run: |
+          echo "GET ${{ steps.url.outputs.url }}/api/quote:"; curl -s -o /dev/null -w '%{http_code}\n' "${{ steps.url.outputs.url }}/api/quote"
+          echo "POST ${{ steps.url.outputs.url }}/api/quote:"
+          curl -s -w '\nHTTP %{http_code}\n' -X POST "${{ steps.url.outputs.url }}/api/quote" -H 'Content-Type: application/json' \
+            -d '{"first_name":"Test","last_name":"Website Form","email":"test+webhook@pristinecleaning.example","phone":"7255550100","city":"Mesquite","service":"Deep Residential Cleaning","property_size":"2-3 Bedrooms (1,000 - 2,200 sq ft)","frequency":"One-time Clean","notes":"TEST submission from GitHub Action - safe to delete","page_url":"https://example/contact","company_website":""}'
+      - name: Test directly to the GHL webhook
+        run: |
+          curl -s -w '\nHTTP %{http_code}\n' -X POST 'https://services.leadconnectorhq.com/hooks/9NgRZju67InERv7bPaGY/webhook-trigger/ea2d8c20-46fc-4958-b187-46b17c27a43b' -H 'Content-Type: application/json' \
+            -d '{"first_name":"Test","last_name":"Direct Webhook","full_name":"Test Direct Webhook","email":"test+direct@pristinecleaning.example","phone":"7255550101","city":"Mesquite","service":"Deep Residential Cleaning","property_size":"2-3 Bedrooms (1,000 - 2,200 sq ft)","frequency":"One-time Clean","notes":"TEST submission from GitHub Action - safe to delete","page_url":"https://example/contact","source":"Website Quote Form","new_customer_offer":"20% off first service","submitted_at":"2026-09-27T00:00:00Z","summary":"Quote request: Deep Residential Cleaning | 2-3 Bedrooms (1,000 - 2,200 sq ft) | One-time Clean | Mesquite. Notes: TEST"}'
