@@ -8,6 +8,8 @@
 import { defineConfig } from "@leadconnector/vite-tanstack-config";
 
 export default defineConfig({
+  // Deploy target: Vercel. Nitro writes the build to .vercel/output, which Vercel serves directly.
+  nitro: { preset: "vercel" },
   // Browser errors stay in the trusted parent-frame console-log flow;
   // do not expose the bridge collector on the public sandbox tunnel.
   devServerBridge: { errorCollector: false },

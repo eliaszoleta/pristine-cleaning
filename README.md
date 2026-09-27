@@ -1,21 +1,16 @@
-# Welcome to your AI Studio project
+# Pristine Cleaning website
 
-This project was built with AI Studio.
+TanStack Start + React + TypeScript + Tailwind CSS. Originally generated with AI Studio; now maintained here.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm.
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install   # or: npm install
+bun run dev   # or: npm run dev
 ```
 
-## Built with
+## Deploying (Vercel)
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+Import this repo in Vercel (Framework preset: Other, defaults for everything else).
+The build (`vite build`) outputs `.vercel/output`, which Vercel deploys as-is.
+Every push to `main` redeploys the live site.

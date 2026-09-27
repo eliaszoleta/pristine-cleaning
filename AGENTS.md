@@ -1,10 +1,6 @@
-<!-- VIBE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to AI Studio. Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on AI Studio's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to AI Studio and show up in
-> the editor, so keep the branch in a working state.
-<!-- VIBE:END -->
+# Project notes
+
+- This site is standalone (not synced with AI Studio). Edit it directly in this repo.
+- Hosting: Vercel. `vite.config.ts` sets the Nitro preset to `vercel`, so `bun run build`
+  (or `npm run build`) writes a ready-to-serve `.vercel/output` folder.
+- Pushes to `main` deploy to production once the repo is imported in Vercel.
