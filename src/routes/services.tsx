@@ -1,0 +1,151 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { CORE_SPECIALTIES, PRISTINE_INFO } from "../lib/business-data";
+import { QuoteRequestForm } from "../components/QuoteRequestForm";
+import { CheckCircle2, Sparkles, ArrowRight, Star, Phone } from "lucide-react";
+
+export const Route = createFileRoute("/services")({
+  head: () => ({
+    meta: [
+      { title: "Cleaning Specialties & Services | Pristine Cleaning Mesquite NV" },
+      {
+        name: "description",
+        content:
+          "Explore Pristine Cleaning services: Short-Term Rental/Airbnb Turnovers, Deep Residential Cleaning, Standard Interior/Exterior Maintenance, and Post-Construction Clean-ups in Mesquite and surrounding areas.",
+      },
+      {
+        property: "og:title",
+        content: "Cleaning Specialties & Services | Pristine Cleaning Mesquite NV",
+      },
+      {
+        property: "og:description",
+        content:
+          "We handle the tough jobs so you don’t have to! Short-term rental turnovers, deep cleans, routine maintenance, and post-construction clean-ups.",
+      },
+      {
+        property: "og:image",
+        content: PRISTINE_INFO.logoUrl,
+      },
+      {
+        name: "twitter:image",
+        content: PRISTINE_INFO.logoUrl,
+      },
+    ],
+  }),
+  component: ServicesPage,
+});
+
+export function ServicesPage() {
+  return (
+    <div className="py-12 md:py-20 space-y-20">
+      {/* Page Header */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary border border-accent/40 text-xs font-semibold uppercase tracking-widest text-primary">
+          <Sparkles className="w-3.5 h-3.5 text-accent" />
+          <span>Proudly Serving Mesquite and Surrounding Areas</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-bold text-foreground max-w-3xl mx-auto">
+          Our Cleaning Specialties
+        </h1>
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+          A cleaner home starts here! Let Pristine Cleaning take care of the mess so you can enjoy
+          more of what matters. We handle the tough jobs so you don’t have to.
+        </p>
+      </section>
+
+      {/* Services List Detailed */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {CORE_SPECIALTIES.map((service, index) => {
+          const isReversed = index % 2 === 1;
+          return (
+            <div
+              key={service.id}
+              id={service.id}
+              className={`bg-card rounded-3xl border border-border p-6 sm:p-10 shadow-sm hover:shadow-md transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
+                isReversed ? "lg:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Image */}
+              <div
+                className={`lg:col-span-5 relative rounded-2xl overflow-hidden aspect-4/3 shadow-md border border-border/60 ${isReversed ? "lg:order-2" : ""}`}
+              >
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <span className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full border border-accent/40 shadow">
+                  {service.badge}
+                </span>
+              </div>
+
+              {/* Text content */}
+              <div className={`lg:col-span-7 space-y-5 ${isReversed ? "lg:order-1" : ""}`}>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-accent uppercase tracking-wider">
+                    <Star className="w-3.5 h-3.5 fill-current" />
+                    <span>Pristine Standard</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                    {service.title}
+                  </h2>
+                  <p className="text-sm font-medium text-primary">{service.summary}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Features checklist */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                  {service.features.map((feature, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-start gap-2 text-xs text-foreground/90 font-medium"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-4 flex flex-wrap items-center gap-4">
+                  <a
+                    href="#quote-form"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-widest hover:bg-primary/95 transition-all border border-accent/40 shadow"
+                  >
+                    <span>Request Free Quote</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-accent" />
+                  </a>
+                  <a
+                    href={`tel:${PRISTINE_INFO.phoneRaw}`}
+                    className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground text-xs font-semibold uppercase tracking-wider transition-colors border border-border"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-accent" />
+                    <span>Call {PRISTINE_INFO.phone}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* Quote Request embedded on Services page */}
+      <section id="quote-form" className="scroll-mt-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-2 mb-8">
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-accent">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Free Quote Request</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+            Request Your Free Cleaning Quote
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+            Tell us about your home or rental and we'll reach out ASAP.
+          </p>
+        </div>
+        <QuoteRequestForm />
+      </section>
+    </div>
+  );
+}
