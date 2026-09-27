@@ -317,32 +317,72 @@ export function Index() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            className={
+              TESTIMONIALS.length === 1
+                ? "max-w-3xl mx-auto"
+                : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            }
+          >
             {TESTIMONIALS.map((t, idx) => (
-              <div
+              <figure
                 key={idx}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl flex flex-col justify-between space-y-4"
+                className={`bg-white/5 backdrop-blur-sm border border-white/10 p-6 sm:p-8 rounded-2xl flex flex-col justify-between space-y-5 ${
+                  // The first (featured) review spans the full row when there are several.
+                  idx === 0 && TESTIMONIALS.length > 1 ? "md:col-span-2 lg:col-span-3" : ""
+                }`}
               >
-                <div className="space-y-3">
-                  <div className="flex gap-1 text-accent">
+                <div className="space-y-4">
+                  <div
+                    className="flex items-center gap-1 text-accent"
+                    aria-label={`${t.rating} out of 5 stars`}
+                  >
                     {[...Array(t.rating)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
-                  <p className="text-sm text-primary-foreground/90 leading-relaxed font-light">
-                    "{t.quote}"
-                  </p>
+                  {t.tags && (
+                    <ul className="flex flex-wrap gap-2">
+                      {t.tags.map((tag) => (
+                        <li
+                          key={tag}
+                          className="text-[11px] font-medium text-white/90 px-2.5 py-0.5 rounded-full border border-accent/40 bg-accent/10"
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <blockquote className="space-y-3 text-sm sm:text-base text-primary-foreground/90 leading-relaxed">
+                    {t.quote.map((paragraph, i) => (
+                      <p key={i}>
+                        {i === 0 && "“"}
+                        {paragraph}
+                        {i === t.quote.length - 1 && "”"}
+                      </p>
+                    ))}
+                  </blockquote>
                 </div>
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                <figcaption className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
                   <div>
-                    <h4 className="font-bold text-white text-sm">{t.author}</h4>
-                    <p className="text-primary-foreground/70">{t.location}</p>
+                    <p className="font-bold text-white text-sm">{t.author}</p>
+                    <p className="text-primary-foreground/70">
+                      {t.location}
+                      {t.date && ` · ${t.date}`}
+                    </p>
                   </div>
-                  <span className="text-[10px] uppercase font-semibold text-accent px-2 py-0.5 rounded-full bg-accent/15 border border-accent/30">
-                    {t.service}
-                  </span>
-                </div>
-              </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-[10px] uppercase font-semibold text-accent px-2 py-0.5 rounded-full bg-accent/15 border border-accent/30">
+                      {t.service}
+                    </span>
+                    {t.source && (
+                      <span className="text-[10px] uppercase font-semibold text-white/80 px-2 py-0.5 rounded-full border border-white/20">
+                        Review on {t.source}
+                      </span>
+                    )}
+                  </div>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>

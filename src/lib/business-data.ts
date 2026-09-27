@@ -176,26 +176,65 @@ export const CORE_SPECIALTIES: Specialty[] = [
   },
 ];
 
-export const TESTIMONIALS = [
+export interface Testimonial {
+  /** Paragraphs of the review, as the customer wrote it (spelling corrected only). */
+  quote: string[];
+  author: string;
+  location: string;
+  rating: number;
+  service: string;
+  /** Where the review was left, e.g. "Turno", "Google", "Facebook". */
+  source?: string;
+  date?: string;
+  tags?: string[];
+}
+
+// Customer reviews shown on the home page. Add new ones as they come in (Turno, Google, Facebook...).
+export const TESTIMONIALS: Testimonial[] = [
   {
-    quote:
+    quote: [
+      "Chelsea is extremely intelligent and on the ball on everything. She pays attention to every detail and forsakes nothing. I am thrilled to have her on my team, knowing her experience will pull her through. Her customer service skills are impeccable, and her patience is heart warming.",
+      "I just love her to pieces, she puts me at peace.",
+      "She's intelligent, and knows her job very well and has a plan on what she does and how she does it. Gives plenty of time to make it pretty. And pristine and 100% perfect rating!!!",
+    ],
+    author: "Vacation Rental Host",
+    location: "Mesquite, Nevada",
+    rating: 5,
+    service: "Short-Term Rental Turnover",
+    source: "Turno",
+    date: "Apr 2026",
+    tags: [
+      "Detail-oriented",
+      "Professional",
+      "Responsive",
+      "Thorough",
+      "On-time",
+      "Careful",
+      "Polite",
+    ],
+  },
+  {
+    quote: [
       "Pristine Cleaning took all the stress out of our Airbnb turnovers. Our guests constantly leave glowing comments about how spotless the place is. Plus, that 20% first-time discount made trying them a no-brainer!",
+    ],
     author: "Elena & Marcus V.",
     location: "Mesquite, NV",
     rating: 5,
     service: "Short-Term Rental Turnover",
   },
   {
-    quote:
+    quote: [
       "We hired them for a deep residential clean after a family gathering. They handled the tough jobs we dreaded doing and our home looked and smelled incredible. Highly recommend!",
+    ],
     author: "Robert & Karen S.",
     location: "Mesquite, NV",
     rating: 5,
     service: "Deep Residential Clean",
   },
   {
-    quote:
+    quote: [
       "We just finished a remodel and needed a post-construction clean-up. Pristine did an outstanding job getting rid of all the drywall dust and residue. Meticulous and fast.",
+    ],
     author: "Samantha T.",
     location: "Virgin River Valley",
     rating: 5,
