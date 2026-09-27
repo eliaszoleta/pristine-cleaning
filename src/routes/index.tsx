@@ -329,7 +329,7 @@ export function Index() {
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
-                  <p className="text-sm italic text-primary-foreground/90 leading-relaxed font-light">
+                  <p className="text-sm text-primary-foreground/90 leading-relaxed font-light">
                     "{t.quote}"
                   </p>
                 </div>
