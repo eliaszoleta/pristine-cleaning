@@ -38,7 +38,7 @@ export function Index() {
   return (
     <div className="space-y-20 md:space-y-28">
       {/* Hero Banner */}
-      <section className="relative overflow-hidden pt-8 pb-14 md:pt-14 md:pb-24">
+      <section className="relative overflow-hidden pt-8 pb-0 md:pt-14 md:pb-4">
         {/* Subtle decorative glow */}
         <div className="absolute top-0 right-1/4 -z-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 left-10 -z-10 w-80 h-80 bg-primary/5 rounded-full blur-2xl pointer-events-none" />

@@ -41,7 +41,7 @@ export function WorkShowcaseGallery() {
   return (
     <section
       id="work-gallery"
-      className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+      className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8"
       // Pause only while a real mouse hovers. On touch screens a tap fires a mouse "enter" with
       // no matching "leave", which used to stop the slideshow for good.
       onPointerEnter={(e) => e.pointerType === "mouse" && setIsPaused(true)}
