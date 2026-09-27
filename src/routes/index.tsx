@@ -54,10 +54,10 @@ export function Index() {
               </p>
 
               <div className="space-y-3">
-                <h1 className="font-hero text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
                   Mesquite House Cleaning &amp; Maid Services
                 </h1>
-                <p className="font-hero text-2xl sm:text-3xl italic font-normal text-primary">
+                <p className="text-xl sm:text-2xl font-medium text-primary">
                   A cleaner home starts right here. ✨
                 </p>
               </div>
