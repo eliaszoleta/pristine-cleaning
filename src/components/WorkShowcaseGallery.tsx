@@ -23,6 +23,19 @@ export function WorkShowcaseGallery() {
     return () => clearTimeout(timer);
   }, [isPaused, nextSlide, currentIndex]);
 
+  // Keep the active thumbnail visible in the one-row strip on mobile. Scrolls only the strip
+  // (not the page), and does nothing on desktop where the thumbnails wrap into a grid.
+  const thumbStripRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const strip = thumbStripRef.current;
+    const thumb = strip?.children[currentIndex] as HTMLElement | undefined;
+    if (!strip || !thumb || strip.scrollWidth <= strip.clientWidth) return;
+    strip.scrollTo({
+      left: thumb.offsetLeft - (strip.clientWidth - thumb.clientWidth) / 2,
+      behavior: "smooth",
+    });
+  }, [currentIndex]);
+
   const activeProject: GalleryProject = WORK_GALLERY[currentIndex] ?? WORK_GALLERY[0]!;
 
   return (
@@ -151,14 +164,17 @@ export function WorkShowcaseGallery() {
               <span className="text-xs font-medium text-muted-foreground">Select Project:</span>
               <span className="text-[11px] text-accent font-medium">Auto-sliding</span>
             </div>
-            <div className="grid grid-cols-5 gap-2">
+            <div
+              ref={thumbStripRef}
+              className="relative flex gap-2 overflow-x-auto snap-x snap-mandatory p-1 -m-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-5 lg:overflow-visible"
+            >
               {WORK_GALLERY.map((item, idx) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => setCurrentIndex(idx)}
                   aria-label={`Jump to project: ${item.title}`}
-                  className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all group ${
+                  className={`relative shrink-0 w-16 sm:w-20 lg:w-auto snap-start aspect-square rounded-xl overflow-hidden border-2 transition-all group ${
                     idx === currentIndex
                       ? "border-primary ring-2 ring-accent/30 scale-105"
                       : "border-border/70 opacity-70 hover:opacity-100"
