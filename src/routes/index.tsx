@@ -1,3 +1,4 @@
+import type * as React from "react";
 import { pageHead, faqJsonLd } from "../lib/seo";
 import { HOME_FAQS, servicePathForSpecialty, AREA_PAGES } from "../lib/seo-content";
 import { FaqSection, ServiceImage } from "../components/SeoSections";
@@ -25,9 +26,9 @@ import {
 export const Route = createFileRoute("/")({
   head: () =>
     pageHead({
-      title: "House Cleaning & Airbnb Turnovers in Mesquite, NV | Pristine Cleaning",
+      title: "Mesquite House Cleaning & Maid Services | Pristine Cleaning",
       description:
-        "Pristine Cleaning offers Airbnb turnovers, standard & deep house cleaning, move-out cleaning and pressure washing in Mesquite NV & St. George UT. 20% off.",
+        "Mesquite NV house cleaning & maid service: Airbnb turnovers, deep cleans, move-out, tile & grout and pressure washing. Also serving St. George. 20% off.",
       path: "/",
       jsonLd: [faqJsonLd(HOME_FAQS)],
     }),
@@ -47,22 +48,50 @@ export function Index() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left copy */}
             <div className="lg:col-span-7 space-y-6">
-              <h1 className="font-hero text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.14]">
-                <span className="flex w-fit items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full bg-secondary border border-accent/40 font-sans text-[11px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-primary leading-normal">
-                  <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
-                  Professional Cleaning Services in Mesquite, NV & Surrounding Areas
-                </span>
-                A cleaner home <br />
-                <span className="italic font-normal text-primary">starts right here. ✨</span>
-              </h1>
+              <p className="flex w-fit items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary border border-accent/40 text-[11px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-primary">
+                <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
+                Locally Owned in Mesquite, NV · 20% Off Your First Clean
+              </p>
+
+              <div className="space-y-3">
+                <h1 className="font-hero text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
+                  Mesquite House Cleaning &amp; Maid Services
+                </h1>
+                <p className="font-hero text-2xl sm:text-3xl italic font-normal text-primary">
+                  A cleaner home starts right here. ✨
+                </p>
+              </div>
 
               <p className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed">
                 Let <strong className="text-foreground font-semibold">Pristine Cleaning</strong>{" "}
-                take care of the mess so you can enjoy more of what matters. We specialize in
-                Short-Term Rental / Airbnb turnovers, standard & deep residential cleaning,
-                move-in/move-out cleaning, tile & grout cleaning, exterior maintenance and pressure
-                washing, and now post-construction clean-ups. We handle the tough jobs so you don’t
+                take care of the mess so you can enjoy more of what matters. From standard house
+                cleaning and maid service to Short-Term Rental / Airbnb turnovers, deep residential
+                cleaning, move-in/move-out cleaning, tile &amp; grout cleaning, exterior pressure
+                washing and now post-construction clean-ups, we handle the tough jobs so you don’t
                 have to!
+              </p>
+
+              <p className="flex items-start gap-2 text-sm text-muted-foreground max-w-xl leading-relaxed">
+                <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <span>
+                  Serving Mesquite and nearby communities including{" "}
+                  {AREA_PAGES.filter((area) => area.slug !== "mesquite-nv")
+                    .map((area) => (
+                      <Link
+                        key={area.slug}
+                        to="/service-areas/$slug"
+                        params={{ slug: area.slug }}
+                        className="font-medium text-foreground hover:text-primary underline-offset-4 hover:underline"
+                      >
+                        {area.city}
+                      </Link>
+                    ))
+                    .reduce<React.ReactNode[]>(
+                      (acc, link, i) => (i === 0 ? [link] : [...acc, ", ", link]),
+                      [],
+                    )}
+                  , Beaver Dam and the Virgin River Valley.
+                </span>
               </p>
 
               {/* Core Offer Badges */}

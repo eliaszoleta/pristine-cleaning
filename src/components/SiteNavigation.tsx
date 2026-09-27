@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { PRISTINE_INFO } from "../lib/business-data";
 import { AREA_PAGES, SERVICE_PAGES } from "../lib/seo-content";
-import { Phone, Mail, Sparkles, Menu, X, MapPin } from "lucide-react";
+import { Phone, Mail, Sparkles, Menu, X, MapPin, Clock } from "lucide-react";
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,10 +11,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/95 border-b border-border/80 transition-all">
       {/* Top contact banner */}
       <div className="bg-primary text-primary-foreground text-xs py-2 px-4 sm:px-8 flex justify-between items-center border-b border-white/10 font-medium">
-        <div className="flex items-center gap-3">
-          <span className="hidden lg:inline text-primary-foreground/80 text-[11px]">
-            Proudly serving Mesquite and surrounding areas
+        <div className="flex items-center gap-3 text-[11px] text-primary-foreground/80">
+          <span className="flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-accent" />
+            <span>
+              Mon–Sat 7am–7pm<span className="hidden sm:inline"> · Sun by appointment</span>
+            </span>
           </span>
+          <span className="hidden lg:inline">· Proudly serving Mesquite and surrounding areas</span>
         </div>
         <div className="flex items-center gap-5">
           <a
