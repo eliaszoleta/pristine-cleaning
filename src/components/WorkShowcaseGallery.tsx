@@ -111,12 +111,22 @@ export function WorkShowcaseGallery() {
 
           {/* Featured Image Frame */}
           <div className="relative bg-black/95 rounded-3xl overflow-hidden border border-border/70 shadow-xl group aspect-4/3 sm:aspect-16/10 flex items-center justify-center">
+            {/* Blurred copy fills the empty space around photos that don't match the frame shape */}
+            <img
+              key={`${activeProject.id}-backdrop`}
+              src={activeProject.imageUrl}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60"
+              loading="lazy"
+            />
+            {/* Whole photo, never cropped, on every screen size */}
             <img
               key={activeProject.id}
               src={activeProject.imageUrl}
               alt={activeProject.seoAlt}
               title={activeProject.seoTitle}
-              className="w-full h-full object-contain sm:object-cover transition-all duration-700 animate-in fade-in zoom-in-95"
+              className="relative w-full h-full object-contain transition-all duration-700 animate-in fade-in zoom-in-95"
               loading="lazy"
             />
 
