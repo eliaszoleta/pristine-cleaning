@@ -208,7 +208,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <script
           src="https://widgets.leadconnectorhq.com/loader.js"
           data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6ab8c53050fc24ace6c97a47"
+          data-widget-id="6ab8d3cafad6c0284b7d8063"
           defer
         />
       </body>
