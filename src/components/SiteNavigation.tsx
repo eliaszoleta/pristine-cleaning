@@ -54,9 +54,6 @@ export function SiteHeader() {
                 Cleaning
               </span>
             </span>
-            <span className="text-[10px] sm:text-xs tracking-wider uppercase font-semibold text-muted-foreground mt-1">
-              Homes • Rentals • Exteriors
-            </span>
           </div>
         </Link>
 
