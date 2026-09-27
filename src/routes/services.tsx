@@ -11,7 +11,7 @@ export const Route = createFileRoute("/services")({
     pageHead({
       title: "Cleaning Services in Mesquite, NV | Pristine Cleaning",
       description:
-        "Airbnb turnovers, standard & deep house cleaning, move-in/move-out cleaning, pressure washing and post-construction cleaning in Mesquite NV & St. George UT.",
+        "Airbnb turnovers, house & deep cleaning, move-out, tile & grout cleaning, pressure washing and post-construction cleaning in Mesquite NV & St. George UT.",
       path: "/services",
       jsonLd: [
         breadcrumbJsonLd([

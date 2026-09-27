@@ -419,6 +419,96 @@ export const SERVICE_PAGES: ServicePage[] = [
     imageAlt: "Oven interior degreased, before and after move-out cleaning in Mesquite NV",
   },
   {
+    slug: "tile-grout-cleaning",
+    name: "Tile & Grout Cleaning",
+    formValue: "Tile & Grout Cleaning",
+    specialtyId: "tile-grout",
+    metaTitle: "Tile & Grout Cleaning in Mesquite, NV | Pristine Cleaning",
+    metaDescription:
+      "Tile and grout cleaning in Mesquite NV & St. George UT. We scrub grout lines, tile floors, showers and backsplashes to remove dirt, soap scum and hard water.",
+    summary:
+      "Grout lines, tile floors, showers and backsplashes scrubbed free of dirt, soap scum and hard water.",
+    h1: "Tile & Grout Cleaning in Mesquite, NV",
+    intro: [
+      "Grout is porous, so it soaks up dirt, spills, soap scum and hard water minerals over time. Even after mopping, tile floors and showers can look dull and dingy. Pristine Cleaning provides tile and grout cleaning for homes and rentals in Mesquite, Bunkerville, St. George and the surrounding area.",
+      "We scrub tile surfaces and every grout line in kitchens, bathrooms, showers, tub surrounds, backsplashes and entryways, lifting the built-up grime that regular cleaning leaves behind so your tile looks bright and fresh again.",
+    ],
+    idealFor: [
+      "Tile floors that stay dingy after mopping",
+      "Showers and tub surrounds with soap scum",
+      "Kitchens and backsplashes with grease buildup",
+      "Rentals and homes getting ready for guests or sale",
+    ],
+    included: [
+      {
+        area: "Floors",
+        tasks: [
+          "Tile surfaces scrubbed",
+          "Grout lines deep cleaned",
+          "Edges and corners detailed",
+          "Floors rinsed and dried",
+        ],
+      },
+      {
+        area: "Showers & bathrooms",
+        tasks: [
+          "Shower and tub surround tile scrubbed",
+          "Soap scum and hard water film removed",
+          "Grout lines brightened",
+          "Fixtures and trim wiped",
+        ],
+      },
+      {
+        area: "Kitchens & more",
+        tasks: [
+          "Backsplash tile and grout degreased",
+          "Tile countertops cleaned",
+          "Entryway and laundry room tile",
+          "Pair with a standard or deep clean",
+        ],
+      },
+    ],
+    whyUs: [
+      {
+        title: "Hard water know-how",
+        text: "Mineral-heavy water in the Virgin River Valley leaves film on tile and grout. Lifting it is part of our everyday work.",
+      },
+      {
+        title: "Detail-first scrubbing",
+        text: "We work grout line by grout line, including corners and edges where grime builds up most.",
+      },
+      {
+        title: "Real results",
+        text: "See tile and shower work in our gallery, from walk-in showers to tub surrounds.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can dirty grout really be cleaned, or does it need replacing?",
+        answer:
+          "In most homes, grout that looks dark or dingy is just dirty. A thorough scrub removes the built-up dirt, soap scum and minerals and brings back much of its original color.",
+      },
+      {
+        question: "Which areas do you clean tile and grout in?",
+        answer:
+          "Tile floors, showers, tub surrounds, kitchen backsplashes, tile countertops, entryways and laundry rooms. Tell us what you have when you request your quote.",
+      },
+      {
+        question: "How often should tile and grout be deep cleaned?",
+        answer:
+          "It depends on traffic and use. Many homes benefit from a tile and grout cleaning once or twice a year, with regular cleaning in between.",
+      },
+      {
+        question: "Can I add tile and grout cleaning to a regular house cleaning?",
+        answer:
+          "Yes. It pairs well with a standard or deep clean, a move-out clean or an Airbnb turnover. Mention it in your quote request.",
+      },
+    ],
+    image: "/gallery/mesquite-walk-in-tile-shower-deep-clean.jpg",
+    imageAlt:
+      "Clean white tile walk-in shower with bright grout lines after tile and grout cleaning in Mesquite NV",
+  },
+  {
     slug: "pressure-washing",
     name: "Exterior Maintenance & Pressure Washing",
     formValue: "Exterior Maintenance / Pressure Washing",
@@ -789,7 +879,7 @@ export const AREA_PAGES: AreaPage[] = [
       {
         question: "What cleaning services do you offer in Littlefield?",
         answer:
-          "Standard and deep house cleaning, vacation rental turnovers, move-in and move-out cleaning, exterior maintenance and pressure washing, and post-construction cleaning.",
+          "Standard and deep house cleaning, vacation rental turnovers, move-in and move-out cleaning, tile and grout cleaning, exterior maintenance and pressure washing, and post-construction cleaning.",
       },
       {
         question: "How far in advance should I book?",
@@ -870,7 +960,7 @@ export const HOME_FAQS: Faq[] = [
   {
     question: "What cleaning services do you offer?",
     answer:
-      "Short-term rental and Airbnb turnovers, standard and deep residential cleaning, move-in and move-out cleaning, exterior maintenance and pressure washing, and post-construction clean-ups.",
+      "Short-term rental and Airbnb turnovers, standard and deep residential cleaning, move-in and move-out cleaning, tile and grout cleaning, exterior maintenance and pressure washing, and post-construction clean-ups.",
   },
   {
     question: "How much does house cleaning cost?",

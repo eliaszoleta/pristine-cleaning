@@ -25,7 +25,7 @@ const LOCAL_BUSINESS_JSON_LD = {
   "@id": BUSINESS_ID,
   name: PRISTINE_INFO.name,
   description:
-    "Local cleaning company in Mesquite, NV offering short-term rental and Airbnb turnovers, standard and deep residential cleaning, move-in/move-out cleaning, exterior maintenance and pressure washing, and post-construction clean-ups.",
+    "Local cleaning company in Mesquite, NV offering short-term rental and Airbnb turnovers, standard and deep residential cleaning, move-in/move-out cleaning, tile and grout cleaning, exterior maintenance and pressure washing, and post-construction clean-ups.",
   url: absoluteUrl("/"),
   logo: absoluteUrl(PRISTINE_INFO.logoUrl),
   image: absoluteUrl(DEFAULT_OG_IMAGE),

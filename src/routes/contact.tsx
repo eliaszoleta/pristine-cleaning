@@ -36,8 +36,9 @@ function ContactPage() {
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
           Whether you need a short-term rental/Airbnb turnover, standard or deep residential
-          cleaning, a move-in/move-out clean, exterior pressure washing, or a post-construction
-          clean-up, we handle the tough jobs so you don't have to! Call or text for a free estimate.
+          cleaning, a move-in/move-out clean, tile and grout cleaning, exterior pressure washing, or
+          a post-construction clean-up, we handle the tough jobs so you don't have to! Call or text
+          for a free estimate.
         </p>
       </section>
 

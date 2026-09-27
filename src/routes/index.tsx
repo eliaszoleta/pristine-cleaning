@@ -19,6 +19,7 @@ import {
   KeyRound,
   Truck,
   Droplets,
+  Grid3x3,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -59,12 +60,13 @@ export function Index() {
                 Let <strong className="text-foreground font-semibold">Pristine Cleaning</strong>{" "}
                 take care of the mess so you can enjoy more of what matters. We specialize in
                 Short-Term Rental / Airbnb turnovers, standard & deep residential cleaning,
-                move-in/move-out cleaning, exterior maintenance and pressure washing, and now
-                post-construction clean-ups. We handle the tough jobs so you don’t have to!
+                move-in/move-out cleaning, tile & grout cleaning, exterior maintenance and pressure
+                washing, and now post-construction clean-ups. We handle the tough jobs so you don’t
+                have to!
               </p>
 
               {/* Core Offer Badges */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
                   <KeyRound className="w-4 h-4 text-accent mb-1.5" />
                   <div className="text-xs font-bold text-foreground">Airbnb Turnovers</div>
@@ -81,11 +83,16 @@ export function Index() {
                   <div className="text-[11px] text-muted-foreground">Like-New Condition</div>
                 </div>
                 <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
+                  <Grid3x3 className="w-4 h-4 text-accent mb-1.5" />
+                  <div className="text-xs font-bold text-foreground">Tile & Grout</div>
+                  <div className="text-[11px] text-muted-foreground">Deep Scrubbed Clean</div>
+                </div>
+                <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
                   <Droplets className="w-4 h-4 text-accent mb-1.5" />
                   <div className="text-xs font-bold text-foreground">Pressure Washing</div>
                   <div className="text-[11px] text-muted-foreground">Exterior Maintenance</div>
                 </div>
-                <div className="col-span-2 sm:col-span-1 p-3 bg-card rounded-xl border border-border shadow-xs">
+                <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
                   <Hammer className="w-4 h-4 text-accent mb-1.5" />
                   <div className="text-xs font-bold text-foreground">Post-Construction</div>
                   <div className="text-[11px] text-accent font-semibold">Now Offering!</div>

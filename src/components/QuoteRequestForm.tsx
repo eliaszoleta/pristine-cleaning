@@ -208,6 +208,7 @@ export function QuoteRequestForm({
                 Post-Construction Clean-up (Now Offering!)
               </option>
               <option value="Move-In / Move-Out Clean">Move-In / Move-Out Clean</option>
+              <option value="Tile & Grout Cleaning">Tile & Grout Cleaning</option>
               <option value="Exterior Maintenance / Pressure Washing">
                 Exterior Maintenance / Pressure Washing
               </option>

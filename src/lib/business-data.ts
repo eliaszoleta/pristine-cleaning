@@ -47,6 +47,7 @@ export const PRISTINE_INFO: BusinessInfo = {
     "Short-Term Rental / Airbnb Specialists",
     "Standard & Deep Residential Cleaning",
     "Move-In / Move-Out Cleaning",
+    "Tile & Grout Cleaning",
     "Exterior Maintenance & Pressure Washing",
     "Now Offering Post-Construction Clean-ups",
     "20% Off First Service for New Customers",
@@ -118,6 +119,24 @@ export const CORE_SPECIALTIES: Specialty[] = [
     ],
     image: "/gallery/mesquite-oven-degreasing-before-after.jpg",
     imageAlt: "Oven interior degreased during a move-out cleaning in Mesquite NV",
+  },
+  {
+    id: "tile-grout",
+    title: "Tile & Grout Cleaning",
+    badge: "Like-New Tile",
+    summary:
+      "Deep scrubbing that lifts built-up dirt, soap scum and hard water from tile and grout lines.",
+    description:
+      "Dingy grout makes even a clean home look dirty. We scrub tile floors, showers, tub surrounds and backsplashes so grout lines look bright again.",
+    features: [
+      "Grout lines scrubbed clean",
+      "Soap scum and hard water film removed",
+      "Tile floors, showers and backsplashes",
+      "Kitchens, bathrooms and entryways",
+    ],
+    image: "/gallery/mesquite-walk-in-tile-shower-deep-clean.jpg",
+    imageAlt:
+      "Clean white tile walk-in shower with bright grout lines after tile and grout cleaning in Mesquite NV",
   },
   {
     id: "exterior-maintenance",
