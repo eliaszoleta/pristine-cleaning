@@ -24,7 +24,7 @@ export function WorkShowcaseGallery() {
     return () => clearInterval(timer);
   }, [isPaused, nextSlide]);
 
-  const activeProject: GalleryProject = WORK_GALLERY[currentIndex];
+  const activeProject: GalleryProject = WORK_GALLERY[currentIndex] ?? WORK_GALLERY[0]!;
 
   return (
     <section
@@ -86,34 +86,37 @@ export function WorkShowcaseGallery() {
             loading="lazy"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/20 to-transparent pointer-events-none" />
 
-          {/* Badge indicator */}
-          <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary text-primary-foreground border border-accent/40 shadow-sm backdrop-blur-md">
-              {activeProject.category}
-            </span>
-            <span className="px-3 py-1 rounded-full text-xs font-medium bg-black/70 text-white/90 border border-white/20 backdrop-blur-md">
-              {activeProject.location}
-            </span>
-          </div>
+          {/* Top overlay: badges + caption */}
+          <div className="absolute top-4 left-4 right-4 flex flex-col gap-3">
+            {/* Badge indicator */}
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary text-primary-foreground border border-accent/40 shadow-sm backdrop-blur-md">
+                {activeProject.category}
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-medium bg-black/70 text-white/90 border border-white/20 backdrop-blur-md">
+                {activeProject.location}
+              </span>
+            </div>
 
-          {/* Quick Caption Overlay on image */}
-          <div className="absolute bottom-4 left-4 right-4 text-white p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div>
-                <h3 className="text-base sm:text-lg font-bold text-white drop-shadow-sm">
-                  {activeProject.title}
-                </h3>
-                <p className="text-xs text-white/80 line-clamp-1">{activeProject.seoDescription}</p>
+            {/* Quick Caption Overlay on image */}
+            <div className="text-white p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-white drop-shadow-sm">
+                    {activeProject.title}
+                  </h3>
+                  <p className="text-xs text-white/80 line-clamp-1">{activeProject.seoDescription}</p>
+                </div>
+                <a
+                  href="#quote-section"
+                  className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold hover:bg-accent/90 transition-colors shadow"
+                >
+                  <span>Request Clean</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
               </div>
-              <a
-                href="#quote-section"
-                className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold hover:bg-accent/90 transition-colors shadow"
-              >
-                <span>Request Clean</span>
-                <ArrowRight className="w-3 h-3" />
-              </a>
             </div>
           </div>
         </div>
