@@ -15,14 +15,13 @@ export function WorkShowcaseGallery() {
     setCurrentIndex((prev) => (prev - 1 + total) % total);
   }, [total]);
 
-  // Auto sliding carousel with pause on hover
+  // Auto-advance every 4.5s. Depending on currentIndex restarts the countdown whenever the
+  // slide changes (including taps/clicks), so a picked photo stays up for the full interval.
   React.useEffect(() => {
     if (isPaused) return;
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 4500);
-    return () => clearInterval(timer);
-  }, [isPaused, nextSlide]);
+    const timer = setTimeout(nextSlide, 4500);
+    return () => clearTimeout(timer);
+  }, [isPaused, nextSlide, currentIndex]);
 
   const activeProject: GalleryProject = WORK_GALLERY[currentIndex] ?? WORK_GALLERY[0]!;
 
@@ -30,8 +29,10 @@ export function WorkShowcaseGallery() {
     <section
       id="work-gallery"
       className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      // Pause only while a real mouse hovers. On touch screens a tap fires a mouse "enter" with
+      // no matching "leave", which used to stop the slideshow for good.
+      onPointerEnter={(e) => e.pointerType === "mouse" && setIsPaused(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setIsPaused(false)}
       aria-label="Pristine Cleaning Recent Projects and Work Showcase Gallery"
     >
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-border pb-6">
