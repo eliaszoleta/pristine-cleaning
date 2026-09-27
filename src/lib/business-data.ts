@@ -82,8 +82,7 @@ export const CORE_SPECIALTIES: Specialty[] = [
       "Essentials like toiletries restocked",
       "Maintenance checks so the property is stage-ready",
     ],
-    image:
-      "https://vibe.filesafe.space/1790470415330648323/assets/85b00af9-5f4a-44cc-aada-a1b3e6368972.png",
+    image: "/images/services/airbnb-turnover-cleaning-mesquite-nv.jpg",
     imageAlt: "Airbnb and short-term rental turnover cleaning in Mesquite NV",
   },
   {
@@ -100,8 +99,7 @@ export const CORE_SPECIALTIES: Specialty[] = [
       "Bathrooms sanitized",
       "Deep cleans: baseboards, grout and built-up grime",
     ],
-    image:
-      "https://vibe.filesafe.space/1790470415330648323/assets/cd04ee46-9601-4d84-b2c6-1e5d3d70d370.png",
+    image: "/images/services/house-cleaning-mesquite-nv.jpg",
     imageAlt: "Standard and deep residential house cleaning in Mesquite NV",
   },
   {
@@ -150,8 +148,7 @@ export const CORE_SPECIALTIES: Specialty[] = [
       "Cabinet interiors, drawers, and trim detailing",
       "Ready for homeowner walk-throughs and immediate move-in",
     ],
-    image:
-      "https://vibe.filesafe.space/1790470415330648323/assets/f3c923f2-7d88-4948-b69e-d48fcd5918f9.png",
+    image: "/images/services/post-construction-cleaning-mesquite-nv.jpg",
     imageAlt: "Post-construction cleaning of a new build in Mesquite NV",
   },
 ];
@@ -203,8 +200,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Post-Renovation Hardwood Floor Deep Scrub & Polish",
     category: "Deep Residential Cleaning",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/699b3366-6d1a-4661-bd51-0d1e8c1ffb5b.jpg",
+    imageUrl: "/gallery/mesquite-hardwood-floors-deep-clean-before-after.jpg",
     seoFilename: "mesquite-hardwood-floors-deep-clean-before-after.jpg",
     seoAlt:
       "Mesquite NV hardwood floor restoration and deep clean before and after by Pristine Cleaning",
@@ -224,8 +220,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Executive Estate Kitchen Post-Construction Cleanup",
     category: "Post-Construction Clean-up",
     location: "Mesquite & Surrounding Areas",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/0fb2019d-0f7d-44e7-85e0-1957f2513f29.jpg",
+    imageUrl: "/gallery/mesquite-luxury-kitchen-post-construction-cleaning-service.jpg",
     seoFilename: "mesquite-luxury-kitchen-post-construction-cleaning-service.jpg",
     seoAlt:
       "Post-construction cleaning of custom luxury kitchen island and marble floors in Mesquite Nevada",
@@ -245,8 +240,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Contemporary Master Bath Dust & Tile De-grime",
     category: "Post-Construction & Deep Clean",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/423c0516-2594-4668-b38f-a62e19c539b5.jpg",
+    imageUrl: "/gallery/mesquite-modern-bathroom-turnover-deep-cleaning.jpg",
     seoFilename: "mesquite-modern-bathroom-turnover-deep-cleaning.jpg",
     seoAlt:
       "Modern master bathroom cleanup before and after mirror and vanity scrubbing in Mesquite NV",
@@ -266,8 +260,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Airbnb Vacation Rental Guest-Ready Bathroom Staging",
     category: "Short-Term Rental / Airbnb Turnover",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/f85cc4da-c8ad-4a1d-b063-e527c737e320.jpg",
+    imageUrl: "/gallery/mesquite-airbnb-guest-ready-turnover-bathroom-staging.jpg",
     seoFilename: "mesquite-airbnb-guest-ready-turnover-bathroom-staging.jpg",
     seoAlt:
       "Short term rental Airbnb guest turnover bathroom sanitization and towel presentation in Mesquite NV",
@@ -287,8 +280,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Residential Kitchen Granite & Stainless Steel Detail",
     category: "Standard & Deep Maintenance",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/3d6deb66-863c-40c1-8398-b9514cb09752.jpg",
+    imageUrl: "/gallery/mesquite-residential-granite-kitchen-counter-cleaning.jpg",
     seoFilename: "mesquite-residential-granite-kitchen-counter-cleaning.jpg",
     seoAlt:
       "Polished granite kitchen island and stainless steel appliances cleaned by Pristine Cleaning Mesquite",
@@ -308,8 +300,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Open-Concept Vacation Home Living & Kitchen Turnover",
     category: "Short-Term Rental / Airbnb Turnover",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/0bef0300-e77c-44c8-a56b-dfaf34a1ba2a.jpg",
+    imageUrl: "/gallery/mesquite-open-concept-vacation-rental-turnover-living-kitchen.jpg",
     seoFilename: "mesquite-open-concept-vacation-rental-turnover-living-kitchen.jpg",
     seoAlt:
       "Open-concept vacation rental living room and kitchen island after turnover cleaning in Mesquite NV by Pristine Cleaning",
@@ -329,8 +320,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Contemporary Living Room & Fireplace Detail Maintenance",
     category: "Standard & Deep Maintenance",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/e493bc2f-4e89-4cbd-ab43-30286007538f.jpg",
+    imageUrl: "/gallery/mesquite-residential-living-room-fireplace-area-cleaning.jpg",
     seoFilename: "mesquite-residential-living-room-fireplace-area-cleaning.jpg",
     seoAlt:
       "Pristine residential living room with fireplace, sectional sofa, and area rug cleaned in Mesquite Nevada",
@@ -350,8 +340,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Classic Dining Room & Wood Furniture Detail Care",
     category: "Deep Residential Cleaning",
     location: "Mesquite & Surrounding Areas",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/d235b390-9463-4de1-804a-57d61dab7056.jpg",
+    imageUrl: "/gallery/mesquite-dining-room-wood-furniture-deep-cleaning.jpg",
     seoFilename: "mesquite-dining-room-wood-furniture-deep-cleaning.jpg",
     seoAlt:
       "Traditional dining room table, wooden china cabinet, and ceiling fan detailed by Pristine Cleaning Mesquite NV",
@@ -371,8 +360,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Bathtub Mineral Scale & Grime Restoration (Before & After)",
     category: "Deep Residential Cleaning",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/75726b66-995c-47ca-8005-77c0b977ba9f.jpg",
+    imageUrl: "/gallery/mesquite-bathtub-mineral-stain-removal-before-after.jpg",
     seoFilename: "mesquite-bathtub-mineral-stain-removal-before-after.jpg",
     seoAlt:
       "Bathtub hard water rust and mineral scale removal before and after cleaning in Mesquite NV",
@@ -392,8 +380,7 @@ export const WORK_GALLERY: GalleryProject[] = [
     title: "Master Suite Bath Construction Debris & Residue Clear-out",
     category: "Post-Construction Clean-up",
     location: "Mesquite, NV",
-    imageUrl:
-      "https://vibe.filesafe.space/1790470415330648323/attachments/97071355-3c00-4905-ad8e-d888192c02ba.jpg",
+    imageUrl: "/gallery/mesquite-master-bathroom-vanity-post-construction-cleaning.jpg",
     seoFilename: "mesquite-master-bathroom-vanity-post-construction-cleaning.jpg",
     seoAlt:
       "Post-construction contractor debris cleanup and quartz vanity detailing in Mesquite NV master bathroom",

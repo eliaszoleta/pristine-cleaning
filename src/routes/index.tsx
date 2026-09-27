@@ -114,7 +114,7 @@ export function Index() {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-accent/30 aspect-4/3 group bg-black">
                 <img
-                  src="https://vibe.filesafe.space/1790470415330648323/assets/cd04ee46-9601-4d84-b2c6-1e5d3d70d370.png"
+                  src="/images/services/house-cleaning-mesquite-nv.jpg"
                   alt="Spotless bright living space cleaned by Pristine Cleaning"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
                   loading="eager"
