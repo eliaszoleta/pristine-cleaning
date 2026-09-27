@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronRight, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronRight, Droplets, MapPin, Sparkles } from "lucide-react";
 import { AREA_PAGES, SERVICE_PAGES, type Faq } from "../lib/seo-content";
 import { QuoteRequestForm } from "./QuoteRequestForm";
 
@@ -152,5 +152,36 @@ export function QuoteSection({
       </div>
       <QuoteRequestForm defaultService={defaultService} defaultCity={defaultCity} />
     </section>
+  );
+}
+
+/** Service photo, or a branded icon panel when the service doesn't have a photo yet. */
+export function ServiceImage({
+  src,
+  alt,
+  label,
+  className = "",
+  loading = "lazy",
+}: {
+  src?: string | undefined;
+  alt: string;
+  label: string;
+  className?: string;
+  loading?: "lazy" | "eager";
+}) {
+  if (src) {
+    return <img src={src} alt={alt} className={className} loading={loading} />;
+  }
+  return (
+    <div
+      role="img"
+      aria-label={alt}
+      className={`flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-primary via-primary to-black text-primary-foreground ${className}`}
+    >
+      <Droplets className="w-12 h-12 text-accent" />
+      <span className="px-6 text-center text-sm font-semibold uppercase tracking-widest">
+        {label}
+      </span>
+    </div>
   );
 }

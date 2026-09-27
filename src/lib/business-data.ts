@@ -21,7 +21,8 @@ export interface BusinessInfo {
 
 export const PRISTINE_INFO: BusinessInfo = {
   name: "Pristine Cleaning",
-  tagline: "Short-Term Rental / Airbnb Turnovers • Residential Deep Cleaning • Maintenance",
+  tagline:
+    "Short-Term Rental / Airbnb Turnovers • Standard & Deep Residential Cleaning • Move-In/Out • Exterior Maintenance",
   headline: "A cleaner home starts here! ✨",
   promoBadge: "New Customer Special",
   promoDiscount: "20% off your first service",
@@ -44,15 +45,29 @@ export const PRISTINE_INFO: BusinessInfo = {
   ],
   badges: [
     "Short-Term Rental / Airbnb Specialists",
-    "Deep Residential Clean Experts",
-    "Standard Interior & Exterior Maintenance",
+    "Standard & Deep Residential Cleaning",
+    "Move-In / Move-Out Cleaning",
+    "Exterior Maintenance & Pressure Washing",
     "Now Offering Post-Construction Clean-ups",
     "20% Off First Service for New Customers",
   ],
   hours: "Monday – Saturday: 7:00 AM – 7:00 PM | Sunday: By Appointment",
 };
 
-export const CORE_SPECIALTIES = [
+export interface Specialty {
+  id: string;
+  title: string;
+  badge: string;
+  summary: string;
+  description: string;
+  features: string[];
+  /** Photo for the card. Leave undefined to show an icon panel until a real photo is added. */
+  image?: string;
+  imageAlt?: string;
+}
+
+// Matches the service list on the business's Facebook page (plus post-construction clean-ups).
+export const CORE_SPECIALTIES: Specialty[] = [
   {
     id: "str-airbnb-turnovers",
     title: "Short-Term Rental / Airbnb Turnovers",
@@ -60,49 +75,66 @@ export const CORE_SPECIALTIES = [
     summary:
       "Rapid, meticulous turnovers designed to keep your guest reviews at 5 stars every single stay.",
     description:
-      "Let us take care of the mess so you can enjoy more of what matters. Full turnover cleaning, crisp staging, linen changes, and restock support.",
+      "We sanitize every room, wash all linens, restock essentials like toiletries, and run maintenance checks so your property is stage-ready for the next guest.",
     features: [
-      "Spotless sanitization between guests",
-      "Linen & towel turnover and presentation",
-      "Kitchen, bath, and living area reset",
-      "Prompt turnover reporting so your calendar never skips a beat",
+      "Every room sanitized between guests",
+      "All linens washed, beds made and towels staged",
+      "Essentials like toiletries restocked",
+      "Maintenance checks so the property is stage-ready",
     ],
     image:
       "https://vibe.filesafe.space/1790470415330648323/assets/85b00af9-5f4a-44cc-aada-a1b3e6368972.png",
+    imageAlt: "Airbnb and short-term rental turnover cleaning in Mesquite NV",
   },
   {
-    id: "deep-residential-cleaning",
-    title: "Deep Residential Cleaning",
+    id: "standard-deep-residential",
+    title: "Standard & Deep Residential Cleaning",
     badge: "Detailed Care",
     summary:
-      "A complete top-to-bottom refresh of your home, tackling the hidden grime and tough jobs you don't want to do.",
+      "Regular house cleaning to keep your home fresh, or a top-to-bottom deep clean for the tough jobs you don't want to do.",
     description:
-      "From detailed baseboard care and kitchen appliances to bathroom grout and window trims, we restore that sparkling fresh feel to your home.",
+      "Standard cleaning covers vacuuming and mopping floors, dusting accessible surfaces, wiping down kitchen counters and sanitizing bathrooms. Deep cleaning adds baseboards, grout, hard water stains and more.",
     features: [
-      "Thorough scrubbing of kitchens and bathrooms",
-      "Baseboard hand-wiping and detailed dust removal",
-      "Hard surface scrubbing and floor deep clean",
-      "Eliminates built-up dirt so your home feels brand new",
+      "Floors vacuumed and mopped",
+      "Accessible surfaces dusted and kitchen counters wiped",
+      "Bathrooms sanitized",
+      "Deep cleans: baseboards, grout and built-up grime",
     ],
     image:
       "https://vibe.filesafe.space/1790470415330648323/assets/cd04ee46-9601-4d84-b2c6-1e5d3d70d370.png",
+    imageAlt: "Standard and deep residential house cleaning in Mesquite NV",
   },
   {
-    id: "standard-maintenance",
-    title: "Standard Interior & Exterior Maintenance",
-    badge: "Regular Upkeep",
+    id: "move-in-out",
+    title: "Move-In / Move-Out Cleaning",
+    badge: "Moving Soon?",
     summary:
-      "Keep your home consistently spotless with scheduled maintenance tailored to your everyday lifestyle.",
+      "An intensive deep-cleaning service designed to return a living space to its original, pristine condition.",
     description:
-      "Reliable, routine interior cleaning paired with exterior patio/entryway upkeep to keep your property looking its best year-round.",
+      "Perfect for renters, sellers, buyers and landlords. With the home empty, we clean inside cabinets, closets and appliances so it's ready for the next move-in.",
     features: [
-      "Regular dusting, vacuuming, and floor mopping",
-      "Surface wipedowns, sanitization, and trash removal",
-      "Exterior patio, porch, and entryway tidy-up",
-      "Flexible recurring schedules: weekly, bi-weekly, or monthly",
+      "Inside cabinets, drawers and closets",
+      "Inside the fridge, oven and microwave",
+      "Bathrooms scrubbed and hard water removed",
+      "Baseboards, doors and floors edge to edge",
     ],
-    image:
-      "https://vibe.filesafe.space/1790470415330648323/assets/7337cd39-3829-43ef-8498-681ebc03418e.png",
+    image: "/gallery/mesquite-oven-degreasing-before-after.jpg",
+    imageAlt: "Oven interior degreased during a move-out cleaning in Mesquite NV",
+  },
+  {
+    id: "exterior-maintenance",
+    title: "Exterior Maintenance & Pressure Washing",
+    badge: "Curb Appeal",
+    summary:
+      "High-powered pressure washing to remove dirt, grime and environmental buildup from outdoor surfaces.",
+    description:
+      "Desert dust, hard water and everyday wear build up fast outside. We pressure wash outdoor surfaces so your home or rental looks clean from the curb.",
+    features: [
+      "High-powered pressure washing",
+      "Dirt, grime and environmental buildup removed",
+      "Outdoor surfaces like patios, walkways and entryways",
+      "Great for homes and vacation rentals",
+    ],
   },
   {
     id: "post-construction",
@@ -120,6 +152,7 @@ export const CORE_SPECIALTIES = [
     ],
     image:
       "https://vibe.filesafe.space/1790470415330648323/assets/f3c923f2-7d88-4948-b69e-d48fcd5918f9.png",
+    imageAlt: "Post-construction cleaning of a new build in Mesquite NV",
   },
 ];
 

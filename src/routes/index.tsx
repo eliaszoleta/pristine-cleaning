@@ -1,6 +1,6 @@
 import { pageHead, faqJsonLd } from "../lib/seo";
 import { HOME_FAQS, servicePathForSpecialty, AREA_PAGES } from "../lib/seo-content";
-import { FaqSection } from "../components/SeoSections";
+import { FaqSection, ServiceImage } from "../components/SeoSections";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PRISTINE_INFO, CORE_SPECIALTIES, TESTIMONIALS } from "../lib/business-data";
 import { QuoteRequestForm } from "../components/QuoteRequestForm";
@@ -17,7 +17,8 @@ import {
   Home,
   Hammer,
   KeyRound,
-  Wrench,
+  Truck,
+  Droplets,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/")({
     pageHead({
       title: "House Cleaning & Airbnb Turnovers in Mesquite, NV | Pristine Cleaning",
       description:
-        "Pristine Cleaning offers Airbnb turnovers, deep house cleaning, recurring cleaning, move-out and post-construction cleaning in Mesquite NV & St. George UT. 20% off.",
+        "Pristine Cleaning offers Airbnb turnovers, standard & deep house cleaning, move-out cleaning and pressure washing in Mesquite NV & St. George UT. 20% off.",
       path: "/",
       jsonLd: [faqJsonLd(HOME_FAQS)],
     }),
@@ -57,13 +58,13 @@ export function Index() {
               <p className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed">
                 Let <strong className="text-foreground font-semibold">Pristine Cleaning</strong>{" "}
                 take care of the mess so you can enjoy more of what matters. We specialize in
-                Short-Term Rental / Airbnb turnovers, deep residential cleaning, standard
-                interior/exterior maintenance, and now post-construction clean-ups. We handle the
-                tough jobs so you don’t have to!
+                Short-Term Rental / Airbnb turnovers, standard & deep residential cleaning,
+                move-in/move-out cleaning, exterior maintenance and pressure washing, and now
+                post-construction clean-ups. We handle the tough jobs so you don’t have to!
               </p>
 
               {/* Core Offer Badges */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">
                 <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
                   <KeyRound className="w-4 h-4 text-accent mb-1.5" />
                   <div className="text-xs font-bold text-foreground">Airbnb Turnovers</div>
@@ -71,15 +72,20 @@ export function Index() {
                 </div>
                 <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
                   <Home className="w-4 h-4 text-accent mb-1.5" />
-                  <div className="text-xs font-bold text-foreground">Deep Residential</div>
-                  <div className="text-[11px] text-muted-foreground">Top-to-Bottom Refresh</div>
+                  <div className="text-xs font-bold text-foreground">Standard & Deep</div>
+                  <div className="text-[11px] text-muted-foreground">Residential Cleaning</div>
                 </div>
                 <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
-                  <Wrench className="w-4 h-4 text-accent mb-1.5" />
-                  <div className="text-xs font-bold text-foreground">Maintenance</div>
-                  <div className="text-[11px] text-muted-foreground">Interior & Exterior</div>
+                  <Truck className="w-4 h-4 text-accent mb-1.5" />
+                  <div className="text-xs font-bold text-foreground">Move-In / Out</div>
+                  <div className="text-[11px] text-muted-foreground">Like-New Condition</div>
                 </div>
                 <div className="p-3 bg-card rounded-xl border border-border shadow-xs">
+                  <Droplets className="w-4 h-4 text-accent mb-1.5" />
+                  <div className="text-xs font-bold text-foreground">Pressure Washing</div>
+                  <div className="text-[11px] text-muted-foreground">Exterior Maintenance</div>
+                </div>
+                <div className="col-span-2 sm:col-span-1 p-3 bg-card rounded-xl border border-border shadow-xs">
                   <Hammer className="w-4 h-4 text-accent mb-1.5" />
                   <div className="text-xs font-bold text-foreground">Post-Construction</div>
                   <div className="text-[11px] text-accent font-semibold">Now Offering!</div>
@@ -171,23 +177,23 @@ export function Index() {
             to="/services"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors group"
           >
-            <span>Learn More About All 4 Services</span>
+            <span>Learn More About All Our Services</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {CORE_SPECIALTIES.map((item) => (
             <div
               key={item.id}
               className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col group"
             >
               <div className="relative aspect-16/9 overflow-hidden">
-                <img
+                <ServiceImage
                   src={item.image}
-                  alt={item.title}
+                  alt={item.imageAlt ?? item.title}
+                  label={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
                 />
                 <span className="absolute top-3 left-3 bg-primary/95 text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full border border-accent/40 shadow">
                   {item.badge}

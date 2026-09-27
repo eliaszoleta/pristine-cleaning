@@ -13,7 +13,7 @@ export interface ServicePage {
   name: string;
   /** Matching option value in the quote form's service dropdown. */
   formValue: string;
-  /** id of the matching CORE_SPECIALTIES entry, if the service is one of the four core specialties. */
+  /** id of the CORE_SPECIALTIES card that links to this page. */
   specialtyId?: string;
   metaTitle: string;
   metaDescription: string;
@@ -25,9 +25,9 @@ export interface ServicePage {
   included: { area: string; tasks: string[] }[];
   whyUs: { title: string; text: string }[];
   faqs: Faq[];
-  /** Gallery photo shown on the page (and used as its social sharing image). */
-  image: string;
-  imageAlt: string;
+  /** Gallery photo shown on the page (and used as its social sharing image). Optional until a real photo exists. */
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface AreaPage {
@@ -55,13 +55,13 @@ export const SERVICE_PAGES: ServicePage[] = [
     specialtyId: "str-airbnb-turnovers",
     metaTitle: "Airbnb Turnover Cleaning in Mesquite, NV | Pristine Cleaning",
     metaDescription:
-      "Reliable Airbnb & VRBO turnover cleaning in Mesquite NV, St. George UT & nearby. Linen changes, restocking, guest-ready staging and fast same-day turnarounds.",
+      "Airbnb & VRBO turnover cleaning in Mesquite NV, St. George UT & nearby. Every room sanitized, linens washed, toiletries restocked and maintenance checks.",
     summary:
-      "Same-day turnovers between guests with linen changes, restocking and guest-ready staging.",
+      "Every room sanitized, all linens washed, essentials restocked and maintenance checks between guests.",
     h1: "Airbnb & Vacation Rental Turnover Cleaning in Mesquite, NV",
     intro: [
       "Your guests judge your rental the moment they walk in. Pristine Cleaning provides short-term rental and Airbnb turnover cleaning for hosts and property managers in Mesquite, Bunkerville, St. George, Littlefield and the surrounding Virgin River Valley, so every check-in feels like the first one.",
-      "We work around your booking calendar, clean between check-out and check-in, change and stage linens, reset every room, and let you know right away if anything is damaged or running low. You get consistent, 5-star-ready results without having to be on site.",
+      "Every turnover includes sanitizing all rooms, washing all linens, restocking essentials like toiletries, and performing maintenance checks to make sure the property is stage-ready. We work around your booking calendar and let you know right away if anything is damaged or running low, so you get consistent, 5-star-ready results without having to be on site.",
     ],
     idealFor: [
       "Airbnb and VRBO hosts",
@@ -85,13 +85,13 @@ export const SERVICE_PAGES: ServicePage[] = [
           "Toilets, tubs and showers scrubbed and sanitized",
           "Mirrors and glass polished streak-free",
           "Fresh towels folded and staged",
-          "Toiletries and paper goods restocked (host-supplied)",
+          "Essentials like toiletries restocked",
         ],
       },
       {
         area: "Bedrooms & living areas",
         tasks: [
-          "Beds stripped and made with fresh linens",
+          "All linens washed and beds made fresh",
           "Dusting of surfaces, decor and ceiling fans",
           "Floors vacuumed and mopped",
           "Furniture, pillows and throws reset to your staging",
@@ -101,8 +101,8 @@ export const SERVICE_PAGES: ServicePage[] = [
         area: "Host support",
         tasks: [
           "Trash and recycling removed",
+          "Maintenance checks so the property is stage-ready",
           "Damage, missing items and low supplies reported",
-          "Checklist that follows your house rules",
           "Flexible same-day turnover windows",
         ],
       },
@@ -135,12 +135,12 @@ export const SERVICE_PAGES: ServicePage[] = [
       {
         question: "Do you wash and change the linens and towels?",
         answer:
-          "Yes. We strip the beds, put on fresh linens, and fold and stage fresh towels. Tell us how you'd like linens handled and we'll build it into your turnover checklist.",
+          "Yes. Washing all linens is part of every turnover. We strip the beds, wash the linens and towels, make the beds fresh, and fold and stage towels for the next guest.",
       },
       {
         question: "Will you tell me if something is damaged or missing?",
         answer:
-          "Yes. If we notice damage, missing items, maintenance problems or supplies running low, we'll let you know right away so you can deal with it before the next guest.",
+          "Yes. Every turnover includes a maintenance check. If we notice damage, missing items, maintenance problems or supplies running low, we'll let you know right away so you can deal with it before the next guest.",
       },
       {
         question: "Which areas do you cover for vacation rental cleaning?",
@@ -155,7 +155,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     slug: "deep-house-cleaning",
     name: "Deep House Cleaning",
     formValue: "Deep Residential Cleaning",
-    specialtyId: "deep-residential-cleaning",
+    specialtyId: "standard-deep-residential",
     metaTitle: "Deep House Cleaning in Mesquite, NV | Pristine Cleaning",
     metaDescription:
       "Top-to-bottom deep house cleaning in Mesquite NV & St. George UT. Baseboards, grout, hard water stains, appliances and more. Free quote, 20% off your first clean.",
@@ -242,18 +242,18 @@ export const SERVICE_PAGES: ServicePage[] = [
       "Shower glass hard water spots removed, before and after deep cleaning in Mesquite NV",
   },
   {
-    slug: "recurring-house-cleaning",
-    name: "Recurring House Cleaning & Home Maintenance",
-    formValue: "Standard Interior/Exterior Maintenance",
-    specialtyId: "standard-maintenance",
-    metaTitle: "Weekly & Bi-Weekly House Cleaning in Mesquite, NV",
+    slug: "house-cleaning",
+    name: "Standard House Cleaning",
+    formValue: "Standard Residential Cleaning",
+    metaTitle: "House Cleaning in Mesquite, NV | Weekly & Bi-Weekly Maid Service",
     metaDescription:
-      "Recurring house cleaning in Mesquite NV & St. George UT: weekly, bi-weekly or monthly. Interior cleaning plus patio and entryway upkeep. Get a free quote today.",
-    summary: "Weekly, bi-weekly or monthly cleaning plus patio and entryway upkeep.",
-    h1: "Recurring House Cleaning & Home Maintenance in Mesquite, NV",
+      "Standard house cleaning in Mesquite NV & St. George UT: floors vacuumed and mopped, surfaces dusted, kitchens wiped and bathrooms sanitized. Weekly or one-time.",
+    summary:
+      "Floors vacuumed and mopped, surfaces dusted, kitchen counters wiped and bathrooms sanitized.",
+    h1: "Standard House Cleaning in Mesquite, NV",
     intro: [
-      "Come home to a clean house without giving up your weekends. Pristine Cleaning offers weekly, bi-weekly and monthly house cleaning for homeowners in Mesquite, Bunkerville, St. George and nearby communities.",
-      "Our maintenance plans cover the full interior plus exterior touch-ups like patios, porches and entryways, so desert dust never gets the upper hand. It's also a great option for seasonal residents who want their home kept ready while they're away.",
+      "Come home to a clean house without giving up your weekends. Pristine Cleaning offers standard residential cleaning for homeowners in Mesquite, Bunkerville, St. George and nearby communities, as a one-time clean or on a weekly, bi-weekly or monthly schedule.",
+      "A standard clean includes vacuuming and mopping floors, dusting accessible surfaces, wiping down kitchen counters and sanitizing bathrooms. It keeps desert dust under control and your home fresh between deep cleans, and it's a great option for seasonal residents who want their home kept ready while they're away.",
     ],
     idealFor: [
       "Busy households and working families",
@@ -263,41 +263,41 @@ export const SERVICE_PAGES: ServicePage[] = [
     ],
     included: [
       {
-        area: "Every visit",
+        area: "Floors & surfaces",
         tasks: [
-          "Dusting of reachable surfaces, furniture and decor",
-          "Kitchen counters, sink and appliance fronts wiped",
-          "Bathrooms cleaned and sanitized",
           "Floors vacuumed and mopped",
+          "Accessible surfaces, furniture and decor dusted",
+          "Mirrors and glass wiped",
+          "Trash emptied",
         ],
       },
       {
-        area: "Exterior upkeep",
+        area: "Kitchen & bathrooms",
         tasks: [
-          "Front entryway and porch swept",
-          "Patio and outdoor seating wiped of dust",
-          "Entry door and glass cleaned",
-          "Trash taken out",
+          "Kitchen counters and sink wiped down",
+          "Appliance fronts cleaned",
+          "Bathrooms sanitized: toilets, tubs, showers and sinks",
+          "Vanities and fixtures wiped",
         ],
       },
       {
         area: "Your schedule",
         tasks: [
-          "Weekly, bi-weekly or monthly visits",
+          "One-time, weekly, bi-weekly or monthly",
           "Consistent checklist every visit",
           "Easy to skip or reschedule",
-          "Add-ons available when you need them",
+          "Upgrade to a deep clean any time",
         ],
       },
     ],
     whyUs: [
       {
         title: "Desert dust, handled",
-        text: "Regular visits keep blowing dust off your floors, sills and patio before it builds up.",
+        text: "Regular visits keep blowing dust off your floors, sills and surfaces before it builds up.",
       },
       {
-        title: "Inside and out",
-        text: "Unlike most maids, our maintenance includes a tidy-up of patios, porches and entryways.",
+        title: "Consistent every visit",
+        text: "The same checklist every time, so you always know what you're getting.",
       },
       {
         title: "Flexible plans",
@@ -305,6 +305,11 @@ export const SERVICE_PAGES: ServicePage[] = [
       },
     ],
     faqs: [
+      {
+        question: "What's included in a standard house cleaning?",
+        answer:
+          "Vacuuming and mopping floors, dusting accessible surfaces, wiping down kitchen counters and sanitizing bathrooms. For baseboards, grout, hard water stains and inside appliances, choose a deep clean.",
+      },
       {
         question: "How often should I schedule house cleaning?",
         answer:
@@ -316,12 +321,7 @@ export const SERVICE_PAGES: ServicePage[] = [
           "Yes. We can keep your home dusted and ready on a schedule that fits your time away, so it's clean when you return.",
       },
       {
-        question: "Is exterior cleaning included in regular maintenance?",
-        answer:
-          "Our maintenance plans include light exterior upkeep such as sweeping entryways and porches and wiping down patio areas. Ask about anything specific you need.",
-      },
-      {
-        question: "Do I need a deep clean before starting recurring service?",
+        question: "Do I need a deep clean before starting regular service?",
         answer:
           "If the home hasn't been professionally cleaned in a while, we usually recommend starting with a deep clean so regular visits can keep it at that level.",
       },
@@ -333,6 +333,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     slug: "move-in-move-out-cleaning",
     name: "Move-In & Move-Out Cleaning",
     formValue: "Move-In / Move-Out Clean",
+    specialtyId: "move-in-out",
     metaTitle: "Move-Out Cleaning in Mesquite, NV | Pristine Cleaning",
     metaDescription:
       "Move-in & move-out cleaning in Mesquite NV & St. George UT. Empty-home cleaning inside cabinets and appliances for renters, sellers, landlords and new owners.",
@@ -340,7 +341,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       "Empty-home cleaning inside cabinets, closets and appliances for renters, sellers and landlords.",
     h1: "Move-In & Move-Out Cleaning in Mesquite, NV",
     intro: [
-      "Moving is stressful enough. Pristine Cleaning takes the cleaning off your list with thorough move-in and move-out cleans for renters, homeowners, landlords and real estate agents in Mesquite, St. George and the surrounding area.",
+      "Our move-in and move-out cleaning is an intensive deep-cleaning service designed to return a living space to its original, pristine condition. Pristine Cleaning takes the cleaning off your list for renters, homeowners, landlords and real estate agents in Mesquite, St. George and the surrounding area.",
       "With the home empty, we can reach everything: inside cabinets and drawers, inside the fridge and oven, closets, baseboards and floors edge to edge. It's the clean you want before handing back the keys or unpacking your first box.",
     ],
     idealFor: [
@@ -416,6 +417,93 @@ export const SERVICE_PAGES: ServicePage[] = [
     ],
     image: "/gallery/mesquite-oven-degreasing-before-after.jpg",
     imageAlt: "Oven interior degreased, before and after move-out cleaning in Mesquite NV",
+  },
+  {
+    slug: "pressure-washing",
+    name: "Exterior Maintenance & Pressure Washing",
+    formValue: "Exterior Maintenance / Pressure Washing",
+    specialtyId: "exterior-maintenance",
+    metaTitle: "Pressure Washing in Mesquite, NV | Pristine Cleaning",
+    metaDescription:
+      "Pressure washing & exterior maintenance in Mesquite NV, St. George UT & nearby. We remove dirt, grime and environmental buildup from outdoor surfaces. Free quote.",
+    summary:
+      "High-powered pressure washing to remove dirt, grime and environmental buildup from outdoor surfaces.",
+    h1: "Pressure Washing & Exterior Maintenance in Mesquite, NV",
+    intro: [
+      "The outside of your home is the first thing guests and neighbors see. Pristine Cleaning uses high-powered pressure washers to remove dirt, grime and environmental buildup from outdoor surfaces for homes and vacation rentals in Mesquite, Bunkerville, St. George and the surrounding area.",
+      "Desert dust, hard water spots and everyday foot traffic build up quickly outdoors. Regular exterior maintenance keeps your patios, walkways and entryways looking clean, and pairs well with an Airbnb turnover or a move-out clean when you want the whole property to shine.",
+    ],
+    idealFor: [
+      "Homeowners boosting curb appeal",
+      "Vacation rentals before peak season",
+      "Getting a home ready to sell or rent",
+      "Seasonal homes after time away",
+    ],
+    included: [
+      {
+        area: "Pressure washing",
+        tasks: [
+          "High-powered pressure washing",
+          "Dirt, grime and environmental buildup removed",
+          "Desert dust and debris rinsed away",
+          "Surfaces left clean and fresh",
+        ],
+      },
+      {
+        area: "Common outdoor surfaces",
+        tasks: [
+          "Patios and outdoor living areas",
+          "Walkways and paths",
+          "Entryways and porches",
+          "Ask us about other surfaces",
+        ],
+      },
+      {
+        area: "Scheduling",
+        tasks: [
+          "One-time or seasonal service",
+          "Pair with interior cleaning",
+          "Great before guests arrive or a listing goes live",
+          "Free quote before we start",
+        ],
+      },
+    ],
+    whyUs: [
+      {
+        title: "Built for desert conditions",
+        text: "Dust storms and hard water leave buildup that a hose won't move. Pressure washing does.",
+      },
+      {
+        title: "Inside and out",
+        text: "Book exterior maintenance alongside your house cleaning or rental turnover and have the whole property done at once.",
+      },
+      {
+        title: "Instant curb appeal",
+        text: "Clean outdoor spaces make homes and rentals look cared for, which guests and buyers notice right away.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What can you pressure wash?",
+        answer:
+          "We pressure wash outdoor surfaces such as patios, walkways, porches and entryways. If you have something else in mind, ask when you request your quote and we'll let you know.",
+      },
+      {
+        question: "How often should outdoor surfaces be pressure washed?",
+        answer:
+          "It depends on use and weather. Many homes benefit from a seasonal cleaning, and busy vacation rentals may need it more often to stay guest-ready.",
+      },
+      {
+        question: "Can I combine pressure washing with a house cleaning?",
+        answer:
+          "Yes. Exterior maintenance pairs well with a standard or deep clean, a move-out clean or an Airbnb turnover. Mention it in your quote request.",
+      },
+      {
+        question: "Do you offer pressure washing outside Mesquite?",
+        answer:
+          "Yes. We serve Mesquite and Bunkerville NV, St. George UT, Littlefield and Scenic AZ, and nearby communities.",
+      },
+    ],
   },
   {
     slug: "post-construction-cleaning",
@@ -512,7 +600,7 @@ export const AREA_PAGES: AreaPage[] = [
     formValue: "Mesquite",
     metaTitle: "House Cleaning in Mesquite, NV | Pristine Cleaning",
     metaDescription:
-      "Local house cleaning in Mesquite, NV: Airbnb turnovers, deep cleaning, recurring maid service, move-out and post-construction cleaning. Call (725) 225-2466.",
+      "Local house cleaning in Mesquite, NV: Airbnb turnovers, standard & deep cleaning, move-out cleaning and pressure washing. Call or text (725) 225-2466.",
     h1: "House Cleaning Services in Mesquite, NV",
     intro: [
       "Pristine Cleaning is a locally based cleaning company in Mesquite, Nevada. We help homeowners, vacation rental hosts, seasonal residents and builders keep their properties spotless, from quick Airbnb turnovers to top-to-bottom deep cleans.",
@@ -625,7 +713,7 @@ export const AREA_PAGES: AreaPage[] = [
     h1: "House Cleaning Services in Bunkerville, NV",
     intro: [
       "Pristine Cleaning serves Bunkerville, Nevada, just across the Virgin River from our home base in Mesquite. We bring the same detailed cleaning to Bunkerville's homes, ranch properties and rentals that our Mesquite clients count on.",
-      "Rural living means extra dust and dirt tracked in from outside. Our deep cleans and recurring maintenance plans keep your floors, surfaces, patios and entryways under control.",
+      "Rural living means extra dust and dirt tracked in from outside. Our standard and deep cleans keep the inside under control, and our pressure washing takes care of patios, walkways and entryways.",
     ],
     localNotes: [
       {
@@ -634,7 +722,7 @@ export const AREA_PAGES: AreaPage[] = [
       },
       {
         title: "Dust and outdoor upkeep",
-        text: "Our maintenance plans include sweeping and wiping down entryways, porches and patios, not just the interior.",
+        text: "Our exterior maintenance uses high-powered pressure washing to clear dirt and buildup from patios, walkways and entryways.",
       },
       {
         title: "Move-in and move-out",
@@ -673,7 +761,7 @@ export const AREA_PAGES: AreaPage[] = [
     h1: "House Cleaning Services in Littlefield, AZ",
     intro: [
       "Pristine Cleaning serves Littlefield, Arizona and nearby Beaver Dam, bringing professional house cleaning to the communities along I-15 between Mesquite and the Virgin River Gorge.",
-      "Finding a reliable cleaner in a small community can be hard. We offer the same services here as in Mesquite: one-time deep cleans, recurring maintenance, rental turnovers and move-in or move-out cleaning.",
+      "Finding a reliable cleaner in a small community can be hard. We offer the same services here as in Mesquite: standard and deep cleans, rental turnovers, move-in or move-out cleaning, and exterior pressure washing.",
     ],
     localNotes: [
       {
@@ -700,7 +788,7 @@ export const AREA_PAGES: AreaPage[] = [
       {
         question: "What cleaning services do you offer in Littlefield?",
         answer:
-          "Deep house cleaning, recurring cleaning, vacation rental turnovers, move-in and move-out cleaning, and post-construction cleaning.",
+          "Standard and deep house cleaning, vacation rental turnovers, move-in and move-out cleaning, exterior maintenance and pressure washing, and post-construction cleaning.",
       },
       {
         question: "How far in advance should I book?",
@@ -720,7 +808,7 @@ export const AREA_PAGES: AreaPage[] = [
       "House cleaning in Scenic, AZ, minutes from Mesquite. Deep cleaning, recurring cleaning, Airbnb turnovers and move-out cleaning. Free quote, 20% off first clean.",
     h1: "House Cleaning Services in Scenic, AZ",
     intro: [
-      "Scenic, Arizona sits just across the state line from Mesquite, and Pristine Cleaning serves homes here as part of our local service area. From one-time deep cleans to recurring maintenance and rental turnovers, we keep Scenic homes spotless.",
+      "Scenic, Arizona sits just across the state line from Mesquite, and Pristine Cleaning serves homes here as part of our local service area. From standard and deep cleans to rental turnovers and exterior pressure washing, we keep Scenic homes spotless inside and out.",
       "Being minutes away means flexible scheduling and quick turnarounds, whether you need a regular clean, a move-out clean or a same-day rental turnover.",
     ],
     localNotes: [
@@ -781,7 +869,7 @@ export const HOME_FAQS: Faq[] = [
   {
     question: "What cleaning services do you offer?",
     answer:
-      "Short-term rental and Airbnb turnovers, deep house cleaning, recurring house cleaning and home maintenance, move-in and move-out cleaning, and post-construction cleaning.",
+      "Short-term rental and Airbnb turnovers, standard and deep residential cleaning, move-in and move-out cleaning, exterior maintenance and pressure washing, and post-construction clean-ups.",
   },
   {
     question: "How much does house cleaning cost?",

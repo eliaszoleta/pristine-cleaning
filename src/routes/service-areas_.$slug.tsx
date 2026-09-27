@@ -4,7 +4,13 @@ import { PRISTINE_INFO } from "../lib/business-data";
 import { getAreaPage, SERVICE_PAGES } from "../lib/seo-content";
 import { BUSINESS_ID, breadcrumbJsonLd, faqJsonLd, pageHead } from "../lib/seo";
 import { absoluteUrl } from "../lib/site-config";
-import { AreaLinkList, Breadcrumbs, FaqSection, QuoteSection } from "../components/SeoSections";
+import {
+  AreaLinkList,
+  Breadcrumbs,
+  FaqSection,
+  QuoteSection,
+  ServiceImage,
+} from "../components/SeoSections";
 
 export const Route = createFileRoute("/service-areas_/$slug")({
   loader: ({ params }) => {
@@ -121,11 +127,11 @@ function AreaDetailPage() {
               className="group bg-card border border-border rounded-2xl overflow-hidden shadow-xs hover:shadow-md hover:border-accent/60 transition-all flex flex-col"
             >
               <div className="aspect-16/9 bg-black overflow-hidden">
-                <img
+                <ServiceImage
                   src={service.image}
-                  alt={service.imageAlt}
+                  alt={service.imageAlt ?? service.name}
+                  label={service.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
                 />
               </div>
               <div className="p-5 space-y-2 flex-1">

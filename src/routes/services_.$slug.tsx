@@ -9,6 +9,7 @@ import {
   Breadcrumbs,
   FaqSection,
   QuoteSection,
+  ServiceImage,
   ServiceLinkGrid,
 } from "../components/SeoSections";
 
@@ -25,8 +26,8 @@ export const Route = createFileRoute("/services_/$slug")({
       title: page.metaTitle,
       description: page.metaDescription,
       path,
-      image: page.image,
-      imageAlt: page.imageAlt,
+      ...(page.image ? { image: page.image } : {}),
+      ...(page.imageAlt ? { imageAlt: page.imageAlt } : {}),
       jsonLd: [
         {
           "@context": "https://schema.org",
@@ -36,7 +37,7 @@ export const Route = createFileRoute("/services_/$slug")({
           serviceType: page.name,
           description: page.metaDescription,
           url: absoluteUrl(path),
-          image: absoluteUrl(page.image),
+          ...(page.image ? { image: absoluteUrl(page.image) } : {}),
           provider: { "@id": BUSINESS_ID },
           areaServed: AREA_PAGES.map((area) => ({
             "@type": "City",
@@ -96,12 +97,12 @@ function ServiceDetailPage() {
           </div>
           <div className="lg:col-span-5">
             <div className="rounded-3xl overflow-hidden border border-border shadow-xl bg-black aspect-4/3">
-              <img
+              <ServiceImage
                 src={page.image}
-                alt={page.imageAlt}
+                alt={page.imageAlt ?? page.name}
+                label={page.name}
                 className="w-full h-full object-cover"
                 loading="eager"
-                fetchPriority="high"
               />
             </div>
           </div>

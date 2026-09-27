@@ -35,9 +35,9 @@ function ContactPage() {
           We’re Here to Make Your Home Pristine
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
-          Whether you need a short-term rental/Airbnb turnover, deep residential cleaning, routine
-          interior/exterior maintenance, or a post-construction clean-up, we handle the tough jobs
-          so you don't have to!
+          Whether you need a short-term rental/Airbnb turnover, standard or deep residential
+          cleaning, a move-in/move-out clean, exterior pressure washing, or a post-construction
+          clean-up, we handle the tough jobs so you don't have to! Call or text for a free estimate.
         </p>
       </section>
 

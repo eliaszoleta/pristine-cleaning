@@ -203,13 +203,14 @@ export function QuoteRequestForm({
                 Short-Term Rental / Airbnb Turnover
               </option>
               <option value="Deep Residential Cleaning">Deep Residential Cleaning</option>
-              <option value="Standard Interior/Exterior Maintenance">
-                Standard Interior & Exterior Maintenance
-              </option>
+              <option value="Standard Residential Cleaning">Standard Residential Cleaning</option>
               <option value="Post-Construction Clean-ups">
                 Post-Construction Clean-up (Now Offering!)
               </option>
               <option value="Move-In / Move-Out Clean">Move-In / Move-Out Clean</option>
+              <option value="Exterior Maintenance / Pressure Washing">
+                Exterior Maintenance / Pressure Washing
+              </option>
             </select>
           </div>
 

@@ -1,6 +1,6 @@
 import { pageHead, breadcrumbJsonLd } from "../lib/seo";
 import { servicePathForSpecialty, AREA_PAGES } from "../lib/seo-content";
-import { ServiceLinkGrid } from "../components/SeoSections";
+import { ServiceImage, ServiceLinkGrid } from "../components/SeoSections";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CORE_SPECIALTIES, PRISTINE_INFO } from "../lib/business-data";
 import { QuoteRequestForm } from "../components/QuoteRequestForm";
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/services")({
     pageHead({
       title: "Cleaning Services in Mesquite, NV | Pristine Cleaning",
       description:
-        "Airbnb & vacation rental turnovers, deep house cleaning, recurring maid service, move-in/move-out and post-construction cleaning in Mesquite NV & St. George UT.",
+        "Airbnb turnovers, standard & deep house cleaning, move-in/move-out cleaning, pressure washing and post-construction cleaning in Mesquite NV & St. George UT.",
       path: "/services",
       jsonLd: [
         breadcrumbJsonLd([
@@ -57,11 +57,11 @@ export function ServicesPage() {
               <div
                 className={`lg:col-span-5 relative rounded-2xl overflow-hidden aspect-4/3 shadow-md border border-border/60 ${isReversed ? "lg:order-2" : ""}`}
               >
-                <img
+                <ServiceImage
                   src={service.image}
-                  alt={service.title}
+                  alt={service.imageAlt ?? service.title}
+                  label={service.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
                 />
                 <span className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full border border-accent/40 shadow">
                   {service.badge}
