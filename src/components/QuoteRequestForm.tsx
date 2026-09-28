@@ -1,4 +1,32 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
+/**
+ * Textarea that grows to fit its text (and its placeholder while empty), so nothing is cut off on
+ * narrow phone screens. Re-measures when the text changes or the screen width changes.
+ */
+function AutoGrowTextarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  const resize = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = "auto";
+    let height = el.scrollHeight;
+    if (!el.value && el.placeholder) {
+      // Measure the placeholder by briefly putting it in as the value (never painted).
+      el.value = el.placeholder;
+      height = el.scrollHeight;
+      el.value = "";
+    }
+    const border = el.offsetHeight - el.clientHeight;
+    el.style.height = `${height + border}px`;
+  }, []);
+  useEffect(resize, [resize, props.value]);
+  useEffect(() => {
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, [resize]);
+  return <textarea ref={ref} {...props} />;
+}
 import { CheckCircle2, ShieldCheck, Clock, Sparkles, ArrowRight, Loader2, Tag } from "lucide-react";
 import { PRISTINE_INFO } from "../lib/business-data";
 
@@ -448,12 +476,12 @@ export function QuoteRequestForm({
           </div>
 
           <div>
-            <textarea
-              rows={2}
+            <AutoGrowTextarea
+              rows={3}
               placeholder="Tell us about the property or any special requests (e.g. post-construction specifics, turnover turnaround window, pets, dates)"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full bg-secondary border border-border rounded-lg px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-accent focus:outline-hidden"
+              className="w-full resize-none overflow-hidden bg-secondary border border-border rounded-lg px-3.5 py-2.5 text-sm leading-relaxed focus:ring-2 focus:ring-accent focus:outline-hidden"
             />
           </div>
         </div>
