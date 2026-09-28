@@ -245,7 +245,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     slug: "house-cleaning",
     name: "Standard House Cleaning",
     formValue: "Standard Residential Cleaning",
-    metaTitle: "Weekly & Bi-Weekly House Cleaning in Mesquite, NV",
+    metaTitle: "House Cleaning in Mesquite, NV | Weekly & Bi-Weekly Maid Service",
     metaDescription:
       "Standard house cleaning in Mesquite NV & St. George UT: floors vacuumed and mopped, surfaces dusted, kitchens wiped and bathrooms sanitized. Weekly or one-time.",
     summary:
@@ -803,7 +803,7 @@ export const AREA_PAGES: AreaPage[] = [
     formValue: "Bunkerville",
     metaTitle: "House Cleaning in Bunkerville, NV | Pristine Cleaning",
     metaDescription:
-      "Trusted house cleaning in Bunkerville, NV from your Mesquite neighbors. Deep cleaning, recurring house cleaning, move-out and rental cleaning. Free quote today.",
+      "Trusted house cleaning in Bunkerville, NV from your Mesquite neighbors. Deep cleaning, recurring maid service, move-out and rental cleaning. Free quote today.",
     h1: "House Cleaning Services in Bunkerville, NV",
     intro: [
       "Pristine Cleaning serves Bunkerville, Nevada, just across the Virgin River from our home base in Mesquite. We bring the same detailed cleaning to Bunkerville's homes, ranch properties and rentals that our Mesquite clients count on.",
