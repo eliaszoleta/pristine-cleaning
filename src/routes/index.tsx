@@ -26,9 +26,9 @@ import {
 export const Route = createFileRoute("/")({
   head: () =>
     pageHead({
-      title: "Mesquite House Cleaning & Maid Services | Pristine Cleaning",
+      title: "House Cleaning Services in Mesquite, NV | Pristine Cleaning",
       description:
-        "Mesquite NV house cleaning & maid service: Airbnb turnovers, deep cleans, move-out, tile & grout and pressure washing. Also serving St. George. 20% off.",
+        "Mesquite NV house cleaning services: Airbnb turnovers, deep cleans, move-out, tile & grout and pressure washing. Also serving St. George. 20% off.",
       path: "/",
       jsonLd: [faqJsonLd(HOME_FAQS)],
     }),
@@ -65,10 +65,10 @@ export function Index() {
               <p className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed">
                 Let <strong className="text-foreground font-semibold">Pristine Cleaning</strong>{" "}
                 take care of the mess so you can enjoy more of what matters. From standard house
-                cleaning and maid service to Short-Term Rental / Airbnb turnovers, deep residential
-                cleaning, move-in/move-out cleaning, tile &amp; grout cleaning, exterior pressure
-                washing and now post-construction clean-ups, we handle the tough jobs so you don’t
-                have to!
+                cleaning and recurring home cleaning to Short-Term Rental / Airbnb turnovers, deep
+                residential cleaning, move-in/move-out cleaning, tile &amp; grout cleaning, exterior
+                pressure washing and now post-construction clean-ups, we handle the tough jobs so
+                you don’t have to!
               </p>
 
               <p className="flex items-start gap-2 text-sm text-muted-foreground max-w-xl leading-relaxed">

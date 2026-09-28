@@ -25,7 +25,7 @@ const LOCAL_BUSINESS_JSON_LD = {
   "@id": BUSINESS_ID,
   name: PRISTINE_INFO.name,
   description:
-    "Locally owned house cleaning and maid service in Mesquite, NV offering short-term rental and Airbnb turnovers, standard and deep residential cleaning, move-in/move-out cleaning, tile and grout cleaning, exterior maintenance and pressure washing, and post-construction clean-ups.",
+    "Locally owned house cleaning service in Mesquite, NV offering short-term rental and Airbnb turnovers, standard and deep residential cleaning, move-in/move-out cleaning, tile and grout cleaning, exterior maintenance and pressure washing, and post-construction clean-ups.",
   url: absoluteUrl("/"),
   logo: absoluteUrl(PRISTINE_INFO.logoUrl),
   image: absoluteUrl(DEFAULT_OG_IMAGE),
@@ -132,11 +132,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pristine Cleaning | House Cleaning & Maid Services in Mesquite, NV" },
+      { title: "Pristine Cleaning | House Cleaning Services in Mesquite, NV" },
       {
         name: "description",
         content:
-          "House cleaning & maid service, Airbnb turnovers, deep cleaning, move-out cleaning and pressure washing in Mesquite NV, Bunkerville, St. George UT and Littlefield AZ.",
+          "House cleaning services, Airbnb turnovers, deep cleaning, move-out cleaning and pressure washing in Mesquite NV, Bunkerville, St. George UT and Littlefield AZ.",
       },
       { name: "author", content: PRISTINE_INFO.name },
       { name: "theme-color", content: "#0f1f2e" },
